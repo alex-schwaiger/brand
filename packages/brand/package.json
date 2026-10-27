@@ -16,5 +16,11 @@
       "default": "./dist/tokens.js"
     },
     "./assets/*": "./assets/*"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.7.1"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs"
   }
 }

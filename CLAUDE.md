@@ -13,7 +13,7 @@ Touching token format, how Konsumenten get the Paket, fonts, hosting, TinaCMS or
 ## Tokens
 
 - The DTCG JSON in `packages/brand/tokens/` is the only place a Token is edited. Everything in `packages/brand/dist/`, `theme.css` included, is generated.
-- After every Token change run `TODO: generator command` and commit `dist/` together with the JSON; CI fails on a stale `dist/`.
+- After every Token change run `pnpm --filter @alex-schwaiger/brand build` and commit `dist/` together with the JSON; CI fails on a stale `dist/`.
 - Font files stay outside the repo; the Paket carries font-family names only (license, ADR 0003).
 
 ## TinaCMS

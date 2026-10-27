@@ -40,3 +40,6 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Check dist is up to date
+        run: git diff --exit-code packages/brand/dist
