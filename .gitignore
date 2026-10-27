@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+.pnpm-store
+.pnpm-debug.log
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# typescript
+*.tsbuildinfo
+
+# misc
+.DS_Store
+*.pem
+.idea/
+.vercel
+
+# env
+.env
+.env*.local
+
+# Switzer darf nicht ins Repo (ITF FFL, ADR 0003); das Download-Skript legt die woff2 hier ab
+apps/site/public/fonts/switzer/
+Switzer-*.woff2
+
+.gstack/
