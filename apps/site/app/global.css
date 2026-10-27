@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "@alex-schwaiger/brand/theme.css";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+@source "../node_modules/fumadocs-ui/dist/**/*.js";
+
+/* Switzer liegt nicht im Repo (ADR 0003); `pnpm fetch-switzer` legt die Dateien ab */
+@font-face {
+  font-family: "Switzer";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/switzer/Switzer-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Switzer";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/switzer/Switzer-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Switzer";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/switzer/Switzer-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/geist-mono/GeistMono-Regular.woff2") format("woff2");
+}
+
+@theme {
+  --font-sans: var(--font-body);
+  --radius-xs: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+}
+
+:root {
+  --color-fd-background: var(--color-canvas);
+  --color-fd-foreground: var(--color-ink);
+  --color-fd-muted: var(--color-subtle);
+  --color-fd-muted-foreground: var(--color-muted);
+  --color-fd-popover: var(--color-canvas);
+  --color-fd-popover-foreground: var(--color-ink);
+  --color-fd-card: var(--color-subtle);
+  --color-fd-card-foreground: var(--color-ink);
+  --color-fd-border: var(--color-border);
+  --color-fd-primary: var(--color-ink);
+  --color-fd-primary-foreground: var(--color-canvas);
+  --color-fd-secondary: var(--color-subtle);
+  --color-fd-secondary-foreground: var(--color-ink);
+  --color-fd-accent: var(--color-subtle);
+  --color-fd-accent-foreground: var(--color-ink);
+  --color-fd-ring: var(--color-ink);
+  --radius: 0px;
+}
+
+body {
+  color: var(--color-body);
+  font-family: var(--font-body);
+}
