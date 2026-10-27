@@ -2,7 +2,7 @@
   "name": "@alex-schwaiger/brand",
   "version": "0.0.0",
   "description": "Tokens und Assets der Marke Alexander Schwaiger",
-  "license": "SEE LICENSE IN ../../LICENSE",
+  "license": "UNLICENSED",
   "type": "module",
   "files": [
     "dist",
