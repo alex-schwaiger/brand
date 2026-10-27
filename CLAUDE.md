@@ -13,7 +13,7 @@ Touching token format, how Konsumenten get the Paket, fonts, hosting, TinaCMS or
 ## Tokens
 
 - The DTCG JSON in `packages/brand/tokens/` is the only place a Token is edited. Everything in `packages/brand/dist/`, `theme.css` included, is generated.
-- After every Token change run `TODO: generator command` and commit `dist/` together with the JSON; CI fails on a stale `dist/`.
+- After every Token change run `pnpm --filter @alex-schwaiger/brand build` and commit `dist/` together with the JSON; CI fails on a stale `dist/`.
 - Font files stay outside the repo; the Paket carries font-family names only (license, ADR 0003).
 
 ## TinaCMS
@@ -33,7 +33,7 @@ Steps: add the entry to `packages/brand/CHANGELOG.md` (rendered as Änderungen),
 
 ## Git & PR workflow
 
-`main` is production and only receives merges from `development`. `development` is the integration branch. Code work happens on `feat/*` branches, one per topic, each opening a PR into `development`. Tina commits content straight to `development`; it goes live with the next merge into `main`. Before pushing, run `TODO: typecheck command` and `TODO: lint command`.
+`main` is production and only receives merges from `development`. `development` is the integration branch. Code work happens on `feat/*` branches, one per topic, each opening a PR into `development`. Tina commits content straight to `development`; it goes live with the next merge into `main`. Before pushing, run `pnpm typecheck` and `pnpm lint`.
 
 ## Agent skills
 

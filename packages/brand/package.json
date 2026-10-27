@@ -1,0 +1,26 @@
+{
+  "name": "@alex-schwaiger/brand",
+  "version": "1.0.0",
+  "description": "Tokens und Assets der Marke Alexander Schwaiger",
+  "license": "UNLICENSED",
+  "type": "module",
+  "files": [
+    "dist",
+    "assets",
+    "tokens"
+  ],
+  "exports": {
+    "./theme.css": "./dist/theme.css",
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./assets/*": "./assets/*"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.7.1"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}
