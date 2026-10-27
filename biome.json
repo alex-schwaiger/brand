@@ -39,6 +39,7 @@
     "includes": [
       "**",
       "!**/.next",
+      "!**/.source",
       "!**/next-env.d.ts",
       "!**/node_modules",
       "!pnpm-lock.yaml",
@@ -47,5 +48,10 @@
       "!.claude",
       "!.gstack"
     ]
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   }
 }
