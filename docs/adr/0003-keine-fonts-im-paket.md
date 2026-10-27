@@ -1,0 +1,3 @@
+# Keine Font-Dateien im Paket und im Repo
+
+Das Paket liefert nur Font-Familiennamen und Fallback-Stacks, keine Font-Dateien. Grund ist die ITF Free Font License 2.0 von Switzer: Selbst hosten ist erlaubt, Weitergabe über ein „repository“, einen „download service“ oder „publicly accessible servers“ ist verboten (§02), und Subsetting oder Formatkonvertierung sind untersagt. Geist Mono (OFL 1.1) dürfte mitgeliefert werden, bleibt für eine einheitliche Regel aber ebenfalls draußen. Die Brand-Seite lädt Switzer zur Build-Zeit aus dem offiziellen Fontshare-Zip (mit Prüfsumme); jeder Konsument hostet seine Font-Dateien selbst. Dritte werden auf fontshare.com verwiesen.

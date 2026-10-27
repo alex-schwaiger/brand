@@ -1,0 +1,3 @@
+# Paketbezug per Git-Tag aus einem öffentlichen Repo, keine Registry
+
+Konsumenten installieren `@alex-schwaiger/brand` über `github:alex-schwaiger/brand#vX.Y.Z&path:/packages/brand`, nicht über npm oder GitHub Packages. Das Repo ist öffentlich, damit der Docker-Build des Portfolios das Paket ohne Zugangsdaten holen kann. Alle Werte sind ohnehin auf der öffentlichen Brand-Seite sichtbar. Ein privates Repo hätte ein Read-Token als BuildKit-Secret in jedem Konsumenten-Build erfordert. Folge: Im Repo darf nichts liegen, was nicht öffentlich sein darf, insbesondere keine Switzer-Dateien (siehe ADR-0003).

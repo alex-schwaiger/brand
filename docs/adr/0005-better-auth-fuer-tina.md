@@ -1,0 +1,3 @@
+# Better Auth für den Tina-Login
+
+Der Tina-Admin wird mit Better Auth abgesichert, angebunden über einen eigenen Tina-Auth-Provider und `isAuthorized` im Backend. Der Standard `tinacms-authjs` speichert Benutzer samt Passwort-Hash als Tina-Collection im Git-Repo, das hier öffentlich ist, und gilt laut README als „not production grade“. Verworfen wurden GitHub-OAuth (Bindung an GitHub), ein Passwort-Hash in einer Umgebungsvariable (kein zweiter Faktor), Clerk (externer SaaS) und Forward-Auth am Proxy (Authelia-Betrieb für einen Benutzer). Better Auth bietet Passkeys, TOTP und Rate-Limit ohne Fremddienst, speichert in der vorhandenen Brand-Mongo und ist für künftige Dienste wiederverwendbar. Preis: ca. 100 Zeilen eigener Verbindungscode, der bei Tina-Updates brechen kann.
