@@ -94,8 +94,8 @@ Bezug per Git-Tag ohne Registry funktioniert, weil das Repo öffentlich ist; der
 
 **TinaCMS, selbst gehostet:**
 - Eigener Mongo-Container im Brand-Compose (nicht die Portfolio-Mongo), persistentes externes Volume `brand_mongo_data`, **kein Backup**: Bei Totalverlust Tina-Index aus Git neu aufbauen, Seed-Skript ausführen, Passkey neu registrieren.
-- Git-Provider GitHub mit Fine-grained Token, nur `contents: write` auf `alex-schwaiger/brand`.
-- Speichern in Tina erzeugt einen Commit direkt auf `main` → Deploy-Workflow → sichtbar nach einigen Minuten (Fumadocs kompiliert MDX zur Build-Zeit). Keine Branches oder PRs für Doku-Texte.
+- Git-Provider GitHub mit Fine-grained Token, nur `contents: write` auf `alex-schwaiger/brand`, Ziel-Branch `development`.
+- Speichern in Tina erzeugt einen Commit direkt auf `development` (Git-Workflow wie im Portfolio: `feat/*` → PR nach `development`, `main` nur aus `development`). Live geht die Änderung mit dem nächsten Merge `development` → `main`, der den Deploy-Workflow auslöst (Fumadocs kompiliert MDX zur Build-Zeit). Keine eigenen Branches oder PRs für Doku-Texte.
 - Tina bearbeitet nur MDX-Texte. Die Token-Bausteine (`<ColorPalette />`, `<TypeScale />`, `<LogoUsage />` …) sind als Tina-MDX-Templates **ohne Felder** registriert: einfügbar, aber nicht editierbar.
 - Lokal: `tinacms dev` im Local Mode, ohne Auth und ohne Mongo, schreibt direkt ins Dateisystem. Die Auth-Strecke wird nur gegen einen lokalen Docker-Compose-Stack getestet.
 
@@ -124,7 +124,7 @@ Bezug per Git-Tag ohne Registry funktioniert, weil das Repo öffentlich ist; der
 | Q13 | Tokens in Tina | Nein, nur per Code |
 | Q14 | Hosting | Next-Server-Container, GHCR + Dokploy |
 | Q15 | Tina-Backend | Selbst gehostet, eigene Mongo, GitHub-Provider |
-| Q16 | Ablauf nach Bearbeitung | Commit auf `main` → Redeploy |
+| Q16 | Ablauf nach Bearbeitung | Commit auf `development`; live mit dem nächsten Merge nach `main` (geändert 2026-10-27, Git-Workflow wie im Portfolio) |
 | Q17 | Fonts im Paket | Keine Font-Dateien |
 | Q18 | Switzer für die Seite | Fontshare-Zip im Build, Prüfsumme |
 | Q19 | Switzer im Portfolio | Durch Originaldateien ersetzen |
@@ -140,3 +140,4 @@ Bezug per Git-Tag ohne Registry funktioniert, weil das Repo öffentlich ist; der
 | Q29 | Mongo-Backup | Persistentes Volume, kein Backup |
 | Q30 | Lokale Entwicklung | Tina Local Mode ohne Auth |
 | Q31 | Schriftstufen (Nachtrag Domain-Modeling) | Gehören zur Marke, ab v1 auf der Typografie-Seite, als Tokens erst in einem späteren Minor-Release |
+| Q32 | Git-Workflow | Wie Portfolio: `feat/*` → PR nach `development`, `main` nur aus `development`, Release-Tags auf `main` |
