@@ -1,6 +1,6 @@
 # Konzept: Brand-Seite brand.alexanderschwaiger.at
 
-Dieses Dokument hält fest, was die Brand-Seite und das Paket `@alex-schwaiger/brand` sind, für wen sie gebaut werden und wie Tokens von hier in die Projekte fließen. Es ist das Ergebnis des Grillings vom 2026-10-27 (Entscheidungen Q1–Q30 unten) und die Grundlage für die Issues. Begriffe stehen in [`GLOSSARY.md`](../GLOSSARY.md), die tragenden Entscheidungen als ADRs in [`docs/adr/`](adr/).
+Dieses Dokument hält fest, was die Brand-Seite und das Paket `@alex-schwaiger/brand` sind, für wen sie gebaut werden und wie Tokens von hier in die Projekte fließen. Es ist das Ergebnis des Grillings vom 2026-10-27 (Entscheidungen Q1–Q30 unten) und die Grundlage für die Issues. Begriffe stehen in [`GLOSSARY.md`](../GLOSSARY.md), die tragenden Entscheidungen als ADRs 0001–0007 in [`docs/adr/`](adr/).
 
 ## 1. Zielgruppe
 
@@ -18,11 +18,13 @@ Die erste Version umfasst nur die **Grundlagen**:
 |---|---|
 | Logo | Wortmarke dunkelblau und negativ (weiß), Schutzzone, Mindestgröße, zulässige Hintergründe |
 | Farben | alle Farb-Tokens, aus dem Paket gerendert |
-| Typografie | Switzer und Geist Mono, Gewichte, Tracking; Bezugsquelle Switzer: Link auf Fontshare |
+| Typografie | Switzer und Geist Mono, Gewichte, Tracking, Typo-Skala (Schriftstufen ohne die Hero-Größe des Portfolios); Bezugsquelle Switzer: Link auf Fontshare |
 | Abstände & Form | Radius (scharfkantig, `0`), Tracking-Tokens |
 | Prinzipien | Brutally Minimal / Editorial, null Radius, Klammern `[ ]` als einziges Dekor |
 | Tonalität | markenweite Teile aus `COPY.md` des Portfolios |
 | Änderungen | `packages/brand/CHANGELOG.md`, gerendert |
+
+**Schriftstufen:** Die Typo-Skala gehört zur Marke und steht ab v1 auf der Typografie-Seite (Werte aus `Portfolio/DESIGN.md`, ohne `text-hero`). Als Tokens kommen die Schriftstufen erst in einem späteren Minor-Release ins Paket; v1.0.0 bleibt eine 1:1-Extraktion des heutigen `@theme`.
 
 **Später (nicht v1):** Anwendungen wie Mail-Templates, Signatur, OG-Bilder, Social, Print; weitere Logo-Varianten (Bildmarke, Favicon-Set).
 
@@ -137,3 +139,4 @@ Bezug per Git-Tag ohne Registry funktioniert, weil das Repo öffentlich ist; der
 | Q28 | Anmeldemethoden | Passkey, Rückfall Passwort + TOTP + Backup-Codes |
 | Q29 | Mongo-Backup | Persistentes Volume, kein Backup |
 | Q30 | Lokale Entwicklung | Tina Local Mode ohne Auth |
+| Q31 | Schriftstufen (Nachtrag Domain-Modeling) | Gehören zur Marke, ab v1 auf der Typografie-Seite, als Tokens erst in einem späteren Minor-Release |

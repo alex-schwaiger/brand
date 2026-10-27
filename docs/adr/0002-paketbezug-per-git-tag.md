@@ -1,3 +1,12 @@
-# Paketbezug per Git-Tag aus einem öffentlichen Repo, keine Registry
+# 0002 Das Portfolio bezieht das Paket per Git-Tag aus einem öffentlichen Repo
 
-Konsumenten installieren `@alex-schwaiger/brand` über `github:alex-schwaiger/brand#vX.Y.Z&path:/packages/brand`, nicht über npm oder GitHub Packages. Das Repo ist öffentlich, damit der Docker-Build des Portfolios das Paket ohne Zugangsdaten holen kann. Alle Werte sind ohnehin auf der öffentlichen Brand-Seite sichtbar. Ein privates Repo hätte ein Read-Token als BuildKit-Secret in jedem Konsumenten-Build erfordert. Folge: Im Repo darf nichts liegen, was nicht öffentlich sein darf, insbesondere keine Switzer-Dateien (siehe ADR-0003).
+**Kontext:** Das Portfolio wird in Docker gebaut und muss das Paket dabei installieren. Brand- und Portfolio-Repo waren beide privat.
+
+**Entscheidung:** Konsumenten installieren `github:alex-schwaiger/brand#vX.Y.Z&path:/packages/brand`. Das Brand-Repo wird öffentlich, damit der Build keine Zugangsdaten braucht. Der Tag wird von Hand erhöht.
+
+**Verworfen:**
+- *GitHub Packages (npm-Registry):* Auch für öffentliche Pakete braucht die Installation dort ein Token, und es kommt ein zusätzlicher Publish-Schritt dazu.
+- *Privates Repo mit Read-Token als BuildKit-Secret:* Jeder Konsumenten-Build bräuchte ein Secret, nur um Werte zu schützen, die auf der Brand-Seite ohnehin öffentlich sind.
+- *Renovate/Dependabot für Updates:* Bei einem Konsumenten und seltenen Releases zu viel Aufwand.
+
+**Konsequenzen:** Im Repo darf nichts liegen, was nicht öffentlich sein darf, insbesondere keine Switzer-Dateien (siehe 0003). Ein Release ist ein Git-Tag. Ohne öffentliches Repo funktioniert der Bezug nicht.

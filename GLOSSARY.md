@@ -1,41 +1,67 @@
 # Brand
 
-Die Personenmarke „Alexander Schwaiger“ und wie sie in seine Projekte gelangt: als dokumentierte Regeln auf der Brand-Seite und als versioniertes Paket.
+Die Personenmarke „Alexander Schwaiger“ und wie sie in seine Websites und Apps gelangt: als dokumentierte Regeln auf der Brand-Seite und als versioniertes Paket. Die Sprache der Brand-Seite ist Deutsch, daher sind die kanonischen Begriffe deutsch.
 
-## Language
+Begriffe aus dem Portfolio (**Projekt**, **Leistung**, **Auftraggeber** …) gelten hier unverändert und werden nicht neu definiert, siehe [Portfolio/GLOSSARY.md](https://github.com/alex-schwaiger/portfolio/blob/main/GLOSSARY.md).
+
+## Marke
 
 **Marke**:
-Die Personenmarke „Alexander Schwaiger“, die einzige Marke, die hier dokumentiert wird.
-_Avoid_: CI, Corporate Identity, Brand (im Fließtext)
+Die Personenmarke „Alexander Schwaiger“, die einzige Marke, die hier festgelegt wird.
+_Avoid_: CI, Corporate Identity, Corporate Design, Brand (im Fließtext)
 
-**Brand-Seite**:
-Die öffentliche Dokumentation der Marke unter brand.alexanderschwaiger.at.
-_Avoid_: Styleguide, Brand-Portal, CI-Handbuch
+**Wortmarke**:
+Das Logo der Marke in Schriftform, in den Varianten dunkelblau und negativ.
+_Avoid_: Logo-Schriftzug, Signet, Schriftzug
 
-**Paket**:
-`@alex-schwaiger/brand`, das versionierte Bündel aus Tokens und Logo-Dateien, das Konsumenten installieren.
-_Avoid_: Library, Design-System-Paket
+**Farbrolle**:
+Der Zweck, für den eine Farbe der Marke steht, etwa „Ink“ für Überschriften und Akzente oder „Canvas“ für den Hintergrund. Konsumenten verwenden immer die Farbrolle, nie den Farbwert direkt.
+_Avoid_: Farbe (ohne Zusatz), Farbname, Primärfarbe, Sekundärfarbe
 
-**Token**:
-Ein benannter Markenwert (Farbe, Font-Familie, Tracking, Radius), dessen einzige Quelle das Paket ist.
-_Avoid_: Variable, Design-Variable
+**Farbwert**:
+Der konkrete Farbton, der einer Farbrolle zugewiesen ist, etwa #13273f für Ink. Kann sich ändern, ohne dass sich die Farbrolle ändert.
+_Avoid_: Farbcode, Hex, Farbe (ohne Zusatz)
 
-**Konsument**:
-Ein Projekt, das das Paket über einen Git-Tag installiert und seine Markenwerte daraus bezieht; heute das Portfolio und die Brand-Seite selbst.
-_Avoid_: Client, Abnehmer
-
-**Release**:
-Eine mit Git-Tag `vX.Y.Z` veröffentlichte Version des Pakets.
-_Avoid_: Deploy (das ist die Auslieferung der Brand-Seite)
+**Schriftstufe**:
+Eine benannte Schriftgröße mit festgelegter Verwendung, etwa die Stufe für Abschnittsüberschriften. Die Schriftstufen bilden zusammen die Typo-Skala der Marke; die Titelgröße auf der Startseite des Portfolios gehört nicht dazu.
+_Avoid_: Schriftgrad, Textgröße, Font-Size, Größe (ohne Zusatz)
 
 **Grundlagen**:
 Die Kapitel der Brand-Seite, die die Marke selbst festlegen: Logo, Farben, Typografie, Abstände & Form, Prinzipien, Tonalität.
-_Avoid_: Basics, Foundations
+_Avoid_: Basics, Foundations, Basiselemente
 
 **Anwendung**:
-Eine konkrete Umsetzung der Marke in einem Medium (Mail, Signatur, OG-Bild, Print); in v1 nicht enthalten.
-_Avoid_: Template, Use Case
+Eine konkrete Umsetzung der Marke in einem Medium, etwa eine Mail, die Signatur, ein Vorschaubild für soziale Medien oder Print. Eine Software, die das Paket nutzt, ist keine Anwendung, sondern ein Konsument.
+_Avoid_: Template, Use Case, App (in diesem Sinn)
 
-**Wortmarke**:
-Das Logo in Schriftform; in v1 die einzige Logo-Form, in den Varianten dunkelblau und negativ.
-_Avoid_: Logo-Schriftzug, Signet
+## Paket
+
+**Paket**:
+`@alex-schwaiger/brand`, das versionierte Bündel aus Tokens und Assets, das Konsumenten einbinden.
+_Avoid_: Library, Bibliothek, Design-System-Paket
+
+**Token**:
+Ein benannter Markenwert, dessen einzige Quelle das Paket ist: eine Farbrolle mit ihrem Farbwert, eine Schriftfamilie, eine Laufweite oder ein Eckenradius.
+_Avoid_: Variable, CSS-Variable, Design-Variable, Stilwert
+
+**Asset**:
+Eine Markendatei im Paket, die Konsumenten unverändert einbinden, etwa eine Variante der Wortmarke. Schriftdateien sind keine Assets der Marke.
+_Avoid_: Download, Datei (ohne Zusatz), Ressource, Material
+
+**Konsument**:
+Eine Website oder App, die das Paket in einem bestimmten Release einbindet und ihre Markenwerte daraus bezieht; heute das Portfolio und die Brand-Seite selbst.
+_Avoid_: Projekt (heißt im Portfolio eine Arbeit für einen Auftraggeber), Client, Abnehmer, Anwendung
+
+**Release**:
+Eine veröffentlichte, mit einer Versionsnummer gekennzeichnete Fassung des Pakets. Ein Konsument wechselt nur bewusst von einem Release zum nächsten.
+_Avoid_: Deploy (das ist die Auslieferung der Brand-Seite), Update, Stand
+
+## Brand-Seite
+
+**Brand-Seite**:
+Die öffentliche Dokumentation der Marke unter brand.alexanderschwaiger.at.
+_Avoid_: Styleguide, Brand-Portal, CI-Handbuch, Markenhandbuch
+
+**Änderungen**:
+Die Liste aller Releases mit den Tokens und Assets, die jeweils neu sind, sich geändert haben oder entfernt wurden.
+_Avoid_: Changelog (im Fließtext), Versionshistorie, Release Notes
