@@ -1,0 +1,15 @@
+{
+  "color": {
+    "$type": "color",
+    "ink": { "$value": "#13273f" },
+    "body": { "$value": "#2d2d2d" },
+    "canvas": { "$value": "#ffffff" },
+    "muted": { "$value": "#6b7280" },
+    "subtle": { "$value": "#f4f5f7" },
+    "online": { "$value": "#22c55e" },
+    "border": { "$value": "#e8e9eb" },
+    "error": { "$value": "#e85346" },
+    "placeholder": { "$value": "#d9d9d9" },
+    "sand": { "$value": "#dcd5cd" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "font": {
+    "$type": "fontFamily",
+    "display": { "$value": ["Switzer", "sans-serif"] },
+    "body": { "$value": ["Switzer", "sans-serif"] },
+    "mono": { "$value": ["Geist Mono", "monospace"] }
+  }
+}

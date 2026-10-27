@@ -1,0 +1,8 @@
+{
+  "tracking": {
+    "$type": "dimension",
+    "display": { "$value": "-0.03em" },
+    "label": { "$value": "0.08em" },
+    "nav": { "$value": "0.04em" }
+  }
+}
