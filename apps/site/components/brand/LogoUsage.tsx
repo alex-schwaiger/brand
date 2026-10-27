@@ -37,7 +37,7 @@ export function LogoUsage() {
                   className='flex h-48 items-center justify-center'
                   style={{ backgroundColor: `var(--color-${bg})` }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {/* biome-ignore lint/performance/noImgElement: SVG aus dem Paket, keine Rasterbild-Optimierung nötig */}
                   <img src={dataUri(asset)} alt='Alexander Schwaiger' className='h-28 w-auto' />
                 </div>
                 <figcaption className='border-t border-fd-border p-3 font-mono text-sm'>
