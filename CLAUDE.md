@@ -18,8 +18,8 @@ Touching token format, how Konsumenten get the Paket, fonts, hosting, TinaCMS or
 
 ## TinaCMS
 
-- After any Tina schema change run `TODO: Tina type generation command` and commit the result.
-- Text shown on the Brand-Seite lives in the Tina-managed MDX under `TODO: content path`; components render it and hold none of it. Values in the Token-Bausteine come from the Paket, never from Tina.
+- After any Tina schema change run `pnpm --filter site tina:generate` and commit the result.
+- Text shown on the Brand-Seite lives in the Tina-managed MDX under `apps/site/content/docs/`; components render it and hold none of it. Values in the Token-Bausteine come from the Paket, never from Tina.
 
 ## Release
 
