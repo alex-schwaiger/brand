@@ -8,6 +8,8 @@ import { TypeScale } from '@/components/brand/TypeScale'
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...defaultMdxComponents,
+    // The included CHANGELOG.md brings its own h1; the page title already is the h1.
+    h1: defaultMdxComponents.h2,
     ColorPalette,
     LogoUsage,
     Schriftstufen,
