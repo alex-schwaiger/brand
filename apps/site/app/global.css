@@ -1,0 +1,302 @@
+@import "tailwindcss";
+/* static: jede Farbrolle als CSS-Variable, auch ohne Utility (Farbtafeln setzen sie per style) */
+@import "@alex-schwaiger/brand/theme.css" theme(static);
+
+/* Switzer liegt nicht im Repo (ADR 0003); `pnpm fetch-switzer` legt die Dateien ab */
+@font-face {
+  font-family: "Switzer";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/switzer/Switzer-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Switzer";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/switzer/Switzer-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Switzer";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/switzer/Switzer-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/geist-mono/GeistMono-Regular.woff2") format("woff2");
+}
+
+@theme {
+  --font-sans: var(--font-body);
+}
+
+@layer base {
+  html {
+    /* Sprungziele landen unter der Kopfleiste */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-body);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
+
+/* Icons aus public/icons/ als Maske, gefärbt über die Textfarbe */
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+/* Suchfeld als Linie: nur das Wort „Suchen“ über einer 1 px Unterlinie */
+.suchfeld {
+  appearance: none;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.suchfeld::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+.suchfeld::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.suchfeld:focus,
+.suchfeld:hover {
+  border-color: var(--color-ink);
+}
+
+.suchfeld:focus-visible {
+  outline: none;
+}
+
+/* Zweispaltige Tabelle aus Zeilen mit Haarlinien, ohne Flächen */
+.linientabelle {
+  border-top: 1px solid var(--color-border);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.linientabelle-zeile {
+  display: grid;
+  grid-template-columns: var(--name-breite, 100px) minmax(0, 1fr);
+  gap: 24px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-body);
+}
+
+.linientabelle-name {
+  color: var(--color-ink);
+  font-weight: 500;
+  letter-spacing: var(--tracking-nav);
+}
+
+@media (min-width: 1024px) {
+  .linientabelle-zeile {
+    grid-template-columns: var(--name-breite, 140px) minmax(0, 1fr);
+  }
+}
+
+/* Inhalt der MDX-Seiten */
+.inhalt {
+  color: var(--color-body);
+  font-size: 16px;
+  line-height: 1.5;
+  --abstand: 16px;
+  --abschnitt: 40px;
+}
+
+.inhalt > * + * {
+  margin-top: var(--abstand);
+}
+
+.inhalt > h2:not(:first-child) {
+  margin-top: var(--abschnitt);
+}
+
+.inhalt > h2 + * {
+  margin-top: var(--abstand);
+}
+
+.inhalt > p,
+.inhalt > ul:where(:not(.liste-ohne-stil)),
+.inhalt > ol {
+  max-width: 640px;
+}
+
+.inhalt h2 {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.inhalt h3 {
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.inhalt strong {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.inhalt code {
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.inhalt a {
+  color: var(--color-ink);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.inhalt a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Listen, die eine Komponente selbst gestaltet (z. B. Farbrollen), tragen .liste-ohne-stil */
+.inhalt ul:where(:not(.liste-ohne-stil)) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inhalt ul:where(:not(.liste-ohne-stil)) > li {
+  position: relative;
+  padding-left: 19px;
+}
+
+/* Quadrat-Marker in ink, 5 px */
+.inhalt ul:where(:not(.liste-ohne-stil)) > li::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-ink);
+}
+
+.inhalt ol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  counter-reset: punkt;
+}
+
+.inhalt ol > li {
+  position: relative;
+  padding-left: 30px;
+  counter-increment: punkt;
+}
+
+/* Nackte Ziffer in Medium ink, 16 px breit, auf der Grundlinie des Texts */
+.inhalt ol > li::before {
+  content: counter(punkt);
+  position: absolute;
+  left: 0;
+  width: 16px;
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.inhalt table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.inhalt th,
+.inhalt td {
+  padding-block: 14px;
+  padding-right: 24px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.inhalt th:last-child,
+.inhalt td:last-child {
+  padding-right: 0;
+}
+
+.inhalt thead th {
+  padding-block: 0 10px;
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.inhalt tbody td:first-child {
+  width: 100px;
+  color: var(--color-ink);
+  font-weight: 500;
+  letter-spacing: var(--tracking-nav);
+}
+
+@media (min-width: 1024px) {
+  .inhalt {
+    font-size: 18px;
+    --abstand: 20px;
+    --abschnitt: 48px;
+  }
+
+  .inhalt h2 {
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .inhalt h3 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  .inhalt code {
+    font-size: 15px;
+  }
+
+  .inhalt ul:where(:not(.liste-ohne-stil)) > li::before {
+    top: 11px;
+  }
+
+  .inhalt tbody td:first-child {
+    width: 140px;
+    white-space: nowrap;
+  }
+}
