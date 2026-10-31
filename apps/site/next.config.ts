@@ -1,5 +1,16 @@
+import { createMDX } from 'fumadocs-mdx/next'
 import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {}
+const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      { source: '/docs/:path*.mdx', destination: '/llms.mdx/docs/:path*' },
+      // Tina baut das Admin-Bundle nach public/admin/index.html
+      { source: '/admin', destination: '/admin/index.html' },
+    ]
+  },
+}
 
-export default nextConfig
+const withMDX = createMDX()
+
+export default withMDX(nextConfig)

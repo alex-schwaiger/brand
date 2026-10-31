@@ -39,13 +39,22 @@
     "includes": [
       "**",
       "!**/.next",
+      "!**/.source",
       "!**/next-env.d.ts",
       "!**/node_modules",
       "!pnpm-lock.yaml",
       "!**/*.md",
       "!packages/brand/dist",
       "!.claude",
-      "!.gstack"
+      "!.gstack",
+      "!apps/site/public/admin",
+      "!apps/site/tina/__generated__",
+      "!apps/site/tina/tina-lock.json"
     ]
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   }
 }
