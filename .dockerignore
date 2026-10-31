@@ -1,0 +1,10 @@
+.git
+.github
+.gstack
+**/node_modules
+**/.next
+.env
+.env*.local
+docs
+# Switzer kommt nur über scripts/fetch-switzer.mjs ins Image, nie aus dem Build-Kontext
+apps/site/public/fonts/switzer/*

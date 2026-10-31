@@ -1,0 +1,50 @@
+# Compose für Dokploy. Domain und Traefik-Labels setzt Dokploy.
+services:
+  brand:
+    image: ghcr.io/alex-schwaiger/brand:latest
+    platform: linux/arm64
+    restart: unless-stopped
+    environment:
+      MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@brand-mongo:27017/brand?authSource=admin
+      GITHUB_PERSONAL_ACCESS_TOKEN: ${GITHUB_PERSONAL_ACCESS_TOKEN}
+      GITHUB_OWNER: ${GITHUB_OWNER:-alex-schwaiger}
+      GITHUB_REPO: ${GITHUB_REPO:-brand}
+      GITHUB_BRANCH: ${GITHUB_BRANCH:-development}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-https://brand.alexanderschwaiger.at}
+      SEED_USER_EMAIL: ${SEED_USER_EMAIL}
+      SEED_USER_PASSWORD: ${SEED_USER_PASSWORD}
+    depends_on:
+      brand-mongo:
+        condition: service_healthy
+    networks:
+      - internal
+      - dokploy-network
+
+  brand-mongo:
+    image: mongo:8
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - brand_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    # Nur im internen Netz, kein Port nach außen
+    networks:
+      - internal
+
+networks:
+  internal:
+    internal: true
+  dokploy-network:
+    external: true
+
+volumes:
+  brand_mongo_data:
+    external: true
