@@ -12,7 +12,9 @@ export const metadata: Metadata = {
 
 export default async function KontoPage() {
   if (isLocalMode) notFound()
-  const session = await getAuth().api.getSession({ headers: await headers() })
+  // headers() zuerst: macht die Seite dynamisch, bevor getAuth() beim Build die Env verlangt
+  const requestHeaders = await headers()
+  const session = await getAuth().api.getSession({ headers: requestHeaders })
   if (!session) redirect('/login')
 
   return (
