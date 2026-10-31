@@ -1,10 +1,14 @@
-# Lokaler Teststack für das selbst gehostete Tina-Backend (ADR-0004): site + brand-mongo.
-# Das Produktions-Compose für Dokploy kommt mit #13.
+# Lokaler Teststack für das selbst gehostete Tina-Backend (ADR-0004) mit Better-Auth-Login
+# (ADR-0005): site + brand-mongo. Das Produktions-Compose für Dokploy kommt mit #13.
 #
 #   GITHUB_TOKEN=<fine-grained, contents:write nur auf alex-schwaiger/brand> \
 #   GITHUB_BRANCH=test/tina-backend docker compose up
 #
-# Ohne TINA_AUTH_ALLOW_ALL=true antwortet /api/tina/* mit 401.
+# Benutzer anlegen, danach auf http://localhost:3000/login anmelden und unter /konto TOTP
+# einrichten (Passkeys gehen nur auf brand.alexanderschwaiger.at):
+#
+#   docker compose exec -e SEED_USER_EMAIL=… -e SEED_USER_PASSWORD=… site \
+#     pnpm --filter site seed:user
 services:
   site:
     image: node:24
@@ -21,7 +25,9 @@ services:
       MONGODB_URI: mongodb://brand-mongo:27017
       GITHUB_TOKEN: ${GITHUB_TOKEN:-}
       GITHUB_BRANCH: ${GITHUB_BRANCH:-test/tina-backend}
-      TINA_AUTH_ALLOW_ALL: ${TINA_AUTH_ALLOW_ALL:-false}
+      # Nur für den lokalen Stack; in Produktion ein eigenes Secret (openssl rand -base64 32)
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-lokaler-teststack-nicht-in-produktion}
+      BETTER_AUTH_URL: http://localhost:3000
       # pnpm-Store außerhalb des Bind-Mounts, sonst landet er im Repo
       npm_config_store_dir: /pnpm-store
     depends_on:

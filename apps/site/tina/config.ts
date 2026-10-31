@@ -1,4 +1,5 @@
-import { defineConfig } from 'tinacms'
+import { defineConfig, LocalAuthProvider } from 'tinacms'
+import { BetterAuthProvider } from './auth-provider'
 
 // Token-Bausteine rendern Werte aus dem Paket (Konzept Q13, Q27): einfügbar, aber nicht editierbar.
 // Tina verlangt pro Template mindestens ein Feld; das versteckte Feld wird nie befüllt und
@@ -10,9 +11,13 @@ const tokenBausteine = ['ColorPalette', 'TypeScale', 'LogoUsage', 'Schriftstufen
 }))
 
 // Lokal (TINA_PUBLIC_IS_LOCAL=true): Dateisystem, kein Login (Konzept Q30).
-// Sonst selbst gehostet: Backend unter /api/tina/*, siehe tina/database.ts (ADR-0004).
+// Sonst selbst gehostet: Backend unter /api/tina/*, siehe tina/database.ts (ADR-0004),
+// Login über Better Auth (ADR-0005).
+const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === 'true'
+
 export default defineConfig({
   contentApiUrlOverride: '/api/tina/gql',
+  authProvider: isLocal ? new LocalAuthProvider() : new BetterAuthProvider(),
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
