@@ -1,0 +1,22 @@
+name: Main-Quelle
+
+# main nimmt nur PRs aus development an (CLAUDE.md, Git & PR workflow).
+# Der Ruleset auf main verlangt diesen Check.
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  source:
+    name: Quelle ist development
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quell-Branch prüfen
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" != "development" ]; then
+            echo "::error::PRs nach main nur aus development, nicht aus '$HEAD_REF'."
+            exit 1
+          fi
