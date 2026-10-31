@@ -4,3 +4,9 @@ packages:
 
 onlyBuiltDependencies:
   - sharp
+
+# mongodb-level (Tina-Index) verlangt mongodb 4, Better Auth 6 oder 7. mongodb-level nutzt nur
+# Grundfunktionen des Treibers (findOne, updateOne, Bulk-Ops, Cursor), die in 7 gleich geblieben sind.
+peerDependencyRules:
+  allowedVersions:
+    mongodb-level>mongodb: "7"
