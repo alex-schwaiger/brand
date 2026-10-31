@@ -1,10 +1,22 @@
 import type { BackendAuthProvider } from '@tinacms/datalayer'
+import { fromNodeHeaders } from 'better-auth/node'
+import { getAuth } from './auth'
 
-// Platzhalter bis Better Auth (#12): lehnt alles ab. `TINA_AUTH_ALLOW_ALL=true` ist nur für den
-// lokalen Compose-Stack gedacht (docker-compose.yml) und fällt mit #12 wieder weg.
-export const placeholderAuthProvider: BackendAuthProvider = {
-  isAuthorized: async () =>
-    process.env.TINA_AUTH_ALLOW_ALL === 'true'
-      ? { isAuthorized: true }
-      : { isAuthorized: false, errorCode: 401, errorMessage: 'Nicht angemeldet' },
+// `isAuthorized` für /api/tina/* (ADR-0005). Verlangt eine Session und einen eingerichteten
+// zweiten Faktor: Ohne TOTP gäbe es für Speichern nur das Passwort.
+export const betterAuthBackend: BackendAuthProvider = {
+  isAuthorized: async (req) => {
+    const session = await getAuth().api.getSession({ headers: fromNodeHeaders(req.headers) })
+    if (!session) {
+      return { isAuthorized: false, errorCode: 401, errorMessage: 'Nicht angemeldet' }
+    }
+    if (!session.user.twoFactorEnabled) {
+      return {
+        isAuthorized: false,
+        errorCode: 403,
+        errorMessage: 'Zweiter Faktor nicht eingerichtet',
+      }
+    }
+    return { isAuthorized: true }
+  },
 }
