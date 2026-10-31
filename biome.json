@@ -47,7 +47,9 @@
       "!packages/brand/dist",
       "!.claude",
       "!.gstack",
+      "!**/.impeccable/hook.cache.json",
       "!apps/site/public/admin",
+      "!apps/site/public/icons",
       "!apps/site/tina/__generated__",
       "!apps/site/tina/tina-lock.json"
     ]

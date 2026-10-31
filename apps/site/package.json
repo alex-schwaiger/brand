@@ -19,7 +19,6 @@
     "@tinacms/graphql": "4.1.0",
     "fumadocs-core": "^16.17.8",
     "fumadocs-mdx": "^15.4.10",
-    "fumadocs-ui": "^16.17.8",
     "mongodb": "^4.17.2",
     "mongodb-level": "0.0.4",
     "next": "^16.4.3",

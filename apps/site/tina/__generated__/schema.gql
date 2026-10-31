@@ -106,8 +106,13 @@ input StringFilter {
   in: [String]
 }
 
+input DocBodyColorPaletteRollenFilter {
+  rolle: StringFilter
+  verwendung: StringFilter
+}
+
 input DocBodyColorPaletteFilter {
-  unused: StringFilter
+  rollen: DocBodyColorPaletteRollenFilter
 }
 
 input DocBodyTypeScaleFilter {
@@ -122,11 +127,16 @@ input DocBodySchriftstufenFilter {
   unused: StringFilter
 }
 
+input DocBodySeitenuebersichtFilter {
+  unused: StringFilter
+}
+
 input DocBodyFilter {
   ColorPalette: DocBodyColorPaletteFilter
   TypeScale: DocBodyTypeScaleFilter
   LogoUsage: DocBodyLogoUsageFilter
   Schriftstufen: DocBodySchriftstufenFilter
+  Seitenuebersicht: DocBodySeitenuebersichtFilter
 }
 
 input DocFilter {

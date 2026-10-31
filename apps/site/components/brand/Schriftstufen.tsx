@@ -1,3 +1,6 @@
+import { uiText } from '@/lib/ui-text'
+import { Musterliste } from './Musterliste'
+
 // Die Schriftstufen sind noch keine Tokens (Konzept Q31); bis zum Minor-Release stehen die Werte hier
 const stufen = [
   { name: 'text-5xl', size: 48, usage: 'Abschnittsüberschriften' },
@@ -10,15 +13,25 @@ const stufen = [
 
 export function Schriftstufen() {
   return (
-    <div className='not-prose divide-y divide-fd-border border border-fd-border'>
-      {stufen.map(({ name, size, usage }) => (
-        <div key={name} className='flex items-baseline justify-between gap-4 p-4'>
-          <p style={{ fontSize: size }}>Alexander Schwaiger</p>
-          <p className='text-right font-mono text-sm text-fd-muted-foreground'>
-            {name} · {size}px · {usage}
-          </p>
-        </div>
-      ))}
-    </div>
+    <Musterliste
+      zeilen={stufen.map(({ name, size, usage }) => ({
+        key: name,
+        // Die größte Stufe passt mobil nur mit dem Nachnamen in die Spalte
+        muster:
+          size >= 48 ? (
+            <>
+              <span className='hidden sm:inline'>Alexander </span>Schwaiger
+            </>
+          ) : (
+            'Alexander Schwaiger'
+          ),
+        stil: { fontSize: size, fontWeight: 400 },
+        name: usage,
+        werte: [
+          { label: uiText.tailwind, wert: name },
+          { label: uiText.groesse, wert: `${size}px` },
+        ],
+      }))}
+    />
   )
 }
