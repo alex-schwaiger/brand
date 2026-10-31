@@ -10,7 +10,8 @@
     "build": "pnpm -r build",
     "lint": "biome check .",
     "format": "biome format --write .",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "fetch-switzer": "node scripts/fetch-switzer.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.3",
