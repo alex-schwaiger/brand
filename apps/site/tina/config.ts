@@ -9,8 +9,10 @@ const tokenBausteine = ['ColorPalette', 'TypeScale', 'LogoUsage', 'Schriftstufen
   fields: [{ type: 'string' as const, name: 'unused', ui: { component: 'hidden' } }],
 }))
 
-// Local Mode: kein clientId, kein Token, kein Backend (Konzept Q30)
+// Lokal (TINA_PUBLIC_IS_LOCAL=true): Dateisystem, kein Login (Konzept Q30).
+// Sonst selbst gehostet: Backend unter /api/tina/*, siehe tina/database.ts (ADR-0004).
 export default defineConfig({
+  contentApiUrlOverride: '/api/tina/gql',
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',

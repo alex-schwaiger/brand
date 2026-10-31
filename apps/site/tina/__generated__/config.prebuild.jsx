@@ -6,6 +6,7 @@ var tokenBausteine = ["ColorPalette", "TypeScale", "LogoUsage", "Schriftstufen"]
   fields: [{ type: "string", name: "unused", ui: { component: "hidden" } }]
 }));
 var config_default = defineConfig({
+  contentApiUrlOverride: "/api/tina/gql",
   build: {
     outputFolder: "admin",
     publicFolder: "public"
@@ -23,8 +24,19 @@ var config_default = defineConfig({
         },
         fields: [
           { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
-          { type: "string", name: "description", label: "Beschreibung", ui: { component: "textarea" } },
-          { type: "rich-text", name: "body", label: "Inhalt", isBody: true, templates: tokenBausteine }
+          {
+            type: "string",
+            name: "description",
+            label: "Beschreibung",
+            ui: { component: "textarea" }
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Inhalt",
+            isBody: true,
+            templates: tokenBausteine
+          }
         ]
       }
     ]
