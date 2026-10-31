@@ -7,17 +7,19 @@ Die Marke arbeitet zurückhaltend: eine Tintenfarbe auf weißem Grund. Farbe ist
 
 ## Rollen
 
-- **Ink**: tiefes Marineblau, die Farbe der Marke. Für allen primären Text, aktive Rahmen und gefüllte Flächen wie Buttons.
-- **Body**: etwas wärmeres Dunkel für Fließtext und nachgeordnete Textelemente.
-- **Canvas**: reines Weiß als Hintergrund.
-- **Muted**: nachgeordneter Text, Zeitangaben, deaktivierte Zustände.
-- **Subtle**: Hintergrund bei Hover.
-- **Online**: Status- und Standortpunkt, die einzige Akzentfarbe.
-- **Error**: allgemeine Warn- und Fehlerfarbe, etwa für Formularmeldungen und fehlgeschlagene Zustände.
-- **Border**: ausschließlich Haarlinien, nie für etwas Strukturelles.
-- **Placeholder**: neutrale Füllung für Bildflächen ohne Bild. Nie ein Gestaltungselement.
-- **Sand**: warmer Grund hinter Projektbildern. Die Bilder liegen darauf eingepasst, als Fläche taucht Sand sonst nirgends auf.
+Ein Klick auf einen Wert kopiert ihn.
 
-## Farbwerte
-
-<ColorPalette />
+<ColorPalette
+  rollen={[
+    { rolle: "ink", verwendung: "Tiefes Marineblau, die Farbe der Marke. Für allen primären Text, aktive Rahmen und gefüllte Flächen wie Buttons." },
+    { rolle: "body", verwendung: "Etwas wärmeres Dunkel für Fließtext und nachgeordnete Textelemente." },
+    { rolle: "canvas", verwendung: "Reines Weiß als Hintergrund." },
+    { rolle: "muted", verwendung: "Nachgeordneter Text, Zeitangaben, deaktivierte Zustände." },
+    { rolle: "subtle", verwendung: "Hintergrund bei Hover." },
+    { rolle: "online", verwendung: "Status- und Standortpunkt, die einzige Akzentfarbe." },
+    { rolle: "error", verwendung: "Allgemeine Warn- und Fehlerfarbe, etwa für Formularmeldungen und fehlgeschlagene Zustände." },
+    { rolle: "border", verwendung: "Ausschließlich Haarlinien, nie für etwas Strukturelles." },
+    { rolle: "placeholder", verwendung: "Neutrale Füllung für Bildflächen ohne Bild. Nie ein Gestaltungselement." },
+    { rolle: "sand", verwendung: "Warmer Grund hinter Projektbildern. Die Bilder liegen darauf eingepasst, als Fläche taucht Sand sonst nirgends auf." }
+  ]}
+/>

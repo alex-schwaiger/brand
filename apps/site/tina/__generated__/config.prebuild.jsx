@@ -1,4 +1,5 @@
 // tina/config.ts
+import { color } from "@alex-schwaiger/brand/tokens";
 import { defineConfig, LocalAuthProvider } from "tinacms";
 
 // tina/auth-provider.ts
@@ -32,11 +33,42 @@ var BetterAuthProvider = class extends AbstractAuthProvider {
 };
 
 // tina/config.ts
-var tokenBausteine = ["ColorPalette", "TypeScale", "LogoUsage", "Schriftstufen"].map((name) => ({
-  name,
-  label: name,
-  fields: [{ type: "string", name: "unused", ui: { component: "hidden" } }]
-}));
+var tokenBausteine = ["TypeScale", "LogoUsage", "Schriftstufen", "Seitenuebersicht"].map(
+  (name) => ({
+    name,
+    label: name,
+    fields: [{ type: "string", name: "unused", ui: { component: "hidden" } }]
+  })
+);
+var colorPalette = {
+  name: "ColorPalette",
+  label: "ColorPalette",
+  fields: [
+    {
+      type: "object",
+      name: "rollen",
+      label: "Verwendung der Farbrollen",
+      list: true,
+      ui: { itemProps: (item) => ({ label: item?.rolle ?? "Neue Farbrolle" }) },
+      fields: [
+        {
+          type: "string",
+          name: "rolle",
+          label: "Farbrolle",
+          required: true,
+          options: Object.keys(color)
+        },
+        {
+          type: "string",
+          name: "verwendung",
+          label: "Verwendung",
+          required: true,
+          ui: { component: "textarea" }
+        }
+      ]
+    }
+  ]
+};
 var isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
 var config_default = defineConfig({
   contentApiUrlOverride: "/api/tina/gql",
@@ -69,7 +101,7 @@ var config_default = defineConfig({
             name: "body",
             label: "Inhalt",
             isBody: true,
-            templates: tokenBausteine
+            templates: [colorPalette, ...tokenBausteine]
           }
         ]
       }

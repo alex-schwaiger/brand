@@ -184,8 +184,13 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type DocBodyColorPaletteRollenFilter = {
+  rolle?: InputMaybe<StringFilter>;
+  verwendung?: InputMaybe<StringFilter>;
+};
+
 export type DocBodyColorPaletteFilter = {
-  unused?: InputMaybe<StringFilter>;
+  rollen?: InputMaybe<DocBodyColorPaletteRollenFilter>;
 };
 
 export type DocBodyTypeScaleFilter = {
@@ -200,11 +205,16 @@ export type DocBodySchriftstufenFilter = {
   unused?: InputMaybe<StringFilter>;
 };
 
+export type DocBodySeitenuebersichtFilter = {
+  unused?: InputMaybe<StringFilter>;
+};
+
 export type DocBodyFilter = {
   ColorPalette?: InputMaybe<DocBodyColorPaletteFilter>;
   TypeScale?: InputMaybe<DocBodyTypeScaleFilter>;
   LogoUsage?: InputMaybe<DocBodyLogoUsageFilter>;
   Schriftstufen?: InputMaybe<DocBodySchriftstufenFilter>;
+  Seitenuebersicht?: InputMaybe<DocBodySeitenuebersichtFilter>;
 };
 
 export type DocFilter = {
@@ -304,8 +314,13 @@ export type StringFilter = {
   in?: Array<string | null | undefined> | null | undefined;
 };
 
+export type DocBodyColorPaletteRollenFilter = {
+  rolle?: StringFilter | null | undefined;
+  verwendung?: StringFilter | null | undefined;
+};
+
 export type DocBodyColorPaletteFilter = {
-  unused?: StringFilter | null | undefined;
+  rollen?: DocBodyColorPaletteRollenFilter | null | undefined;
 };
 
 export type DocBodyTypeScaleFilter = {
@@ -320,11 +335,16 @@ export type DocBodySchriftstufenFilter = {
   unused?: StringFilter | null | undefined;
 };
 
+export type DocBodySeitenuebersichtFilter = {
+  unused?: StringFilter | null | undefined;
+};
+
 export type DocBodyFilter = {
   ColorPalette?: DocBodyColorPaletteFilter | null | undefined;
   TypeScale?: DocBodyTypeScaleFilter | null | undefined;
   LogoUsage?: DocBodyLogoUsageFilter | null | undefined;
   Schriftstufen?: DocBodySchriftstufenFilter | null | undefined;
+  Seitenuebersicht?: DocBodySeitenuebersichtFilter | null | undefined;
 };
 
 export type DocFilter = {
