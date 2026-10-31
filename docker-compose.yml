@@ -1,0 +1,50 @@
+# Lokaler Teststack für das selbst gehostete Tina-Backend (ADR-0004) mit Better-Auth-Login
+# (ADR-0005): site + brand-mongo. Das Produktions-Compose für Dokploy kommt mit #13.
+#
+#   GITHUB_TOKEN=<fine-grained, contents:write nur auf alex-schwaiger/brand> \
+#   GITHUB_BRANCH=test/tina-backend docker compose up
+#
+# Benutzer anlegen, danach auf http://localhost:3000/login anmelden und unter /konto TOTP
+# einrichten (Passkeys gehen nur auf brand.alexanderschwaiger.at):
+#
+#   docker compose exec -e SEED_USER_EMAIL=… -e SEED_USER_PASSWORD=… site \
+#     pnpm --filter site seed:user
+services:
+  site:
+    image: node:24
+    working_dir: /repo
+    command: sh -c "corepack enable && pnpm install --frozen-lockfile && pnpm --filter site exec next dev -p 3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/repo
+      # Container-eigene node_modules, damit macOS-Binaries nicht überschrieben werden
+      - site_node_modules:/repo/node_modules
+      - site_app_node_modules:/repo/apps/site/node_modules
+    environment:
+      MONGODB_URI: mongodb://brand-mongo:27017
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      GITHUB_BRANCH: ${GITHUB_BRANCH:-test/tina-backend}
+      # Nur für den lokalen Stack; in Produktion ein eigenes Secret (openssl rand -base64 32)
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-lokaler-teststack-nicht-in-produktion}
+      BETTER_AUTH_URL: http://localhost:3000
+      # pnpm-Store außerhalb des Bind-Mounts, sonst landet er im Repo
+      npm_config_store_dir: /pnpm-store
+    depends_on:
+      brand-mongo:
+        condition: service_healthy
+
+  brand-mongo:
+    image: mongo:8
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - brand_mongo_data:/data/db
+
+volumes:
+  brand_mongo_data:
+  site_node_modules:
+  site_app_node_modules:

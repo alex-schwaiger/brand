@@ -24,3 +24,9 @@ apps/site/public/fonts/switzer/*
 Switzer-*.woff2
 
 .gstack/
+.source/
+
+# TinaCMS: Admin-Bundle und Dev-Datenbank sind generiert
+apps/site/public/admin/
+apps/site/tina/__generated__/db/
+apps/site/tina/__generated__/*.log
