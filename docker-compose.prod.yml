@@ -3,6 +3,8 @@ services:
   brand:
     image: ghcr.io/alex-schwaiger/brand:latest
     platform: linux/arm64
+    # Jeder Deploy zieht das Image, das der Deploy-Workflow gerade gepusht hat
+    pull_policy: always
     restart: unless-stopped
     environment:
       MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@brand-mongo:27017/brand?authSource=admin
