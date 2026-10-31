@@ -28,7 +28,7 @@ FROM deps AS build
 COPY . .
 COPY --from=fonts /app/apps/site/public/fonts/switzer apps/site/public/fonts/switzer
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN pnpm --filter site build
+RUN pnpm --filter site build && pnpm --filter site build:seed
 
 # --- Laufzeit ---
 FROM node:${NODE_VERSION}-alpine AS runner
@@ -41,6 +41,9 @@ RUN addgroup -S app && adduser -S app -G app
 COPY --from=build --chown=app:app /app/apps/site/.next/standalone ./
 COPY --from=build --chown=app:app /app/apps/site/.next/static apps/site/.next/static
 COPY --from=build --chown=app:app /app/apps/site/public apps/site/public
+# Seed-Skript für den einzigen Tina-Benutzer (ADR 0005), mit allen Abhängigkeiten gebündelt:
+#   docker exec -e SEED_USER_EMAIL=… -e SEED_USER_PASSWORD=… <container> node apps/site/seed-user.mjs
+COPY --from=build --chown=app:app /app/apps/site/.seed/seed-user.mjs apps/site/seed-user.mjs
 USER app
 EXPOSE 3000
 CMD ["node", "apps/site/server.js"]

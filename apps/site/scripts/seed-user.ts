@@ -3,6 +3,10 @@
 //
 //   SEED_USER_EMAIL=… SEED_USER_PASSWORD=… pnpm --filter site seed:user
 //
+// Im Produktions-Container liegt es gebündelt als apps/site/seed-user.mjs (build:seed):
+//
+//   docker exec -e SEED_USER_EMAIL=… -e SEED_USER_PASSWORD=… <container> node apps/site/seed-user.mjs
+//
 // Braucht außerdem MONGODB_URI, BETTER_AUTH_SECRET und BETTER_AUTH_URL wie die laufende Seite.
 // TOTP und Passkey richtet man danach unter /konto ein.
 import { closeAuth, getAuth } from '../lib/auth.ts'
