@@ -10,9 +10,17 @@ Begriffe aus dem Portfolio (**Projekt**, **Leistung**, **Auftraggeber** …) gel
 Die Personenmarke „Alexander Schwaiger“, die einzige Marke, die hier festgelegt wird.
 _Avoid_: CI, Corporate Identity, Corporate Design, Brand (im Fließtext)
 
-**Wortmarke**:
-Das Logo der Marke in Schriftform, in den Varianten dunkelblau und negativ.
-_Avoid_: Logo-Schriftzug, Signet, Schriftzug
+**Signet**:
+Das Logo der Marke: ein A für den Namen und ein Kreis für „aus einer Hand“, ohne Schriftzug. Es gibt die Varianten Ink, Schwarz und Negativ (weiß).
+_Avoid_: Wortmarke (eine Wortmarke gibt es noch nicht), Bildmarke, Icon, Logo-Schriftzug
+
+**Farbgruppe**:
+Die Einordnung einer Farbrolle nach ihrem Gewicht: Primär (`ink`), Sekundär (`sand`), Neutral, Akzent (`online`), Signal (`error`) und Hilfsfarbe (`placeholder`). Eine Farbgruppe ist kein Token; Konsumenten verwenden weiter die Farbrolle.
+_Avoid_: Farbkategorie, Farbtyp
+
+**Bildwelt**:
+Eine der zwei Arten von Bildern der Marke: Personenfotos (kühl, nie auf Sand) und Projektbilder (eingepasst auf Sand).
+_Avoid_: Bildstil, Look, Moodboard
 
 **Farbrolle**:
 Der Zweck, für den eine Farbe der Marke steht, etwa „Ink“ für Überschriften und Akzente oder „Canvas“ für den Hintergrund. Konsumenten verwenden immer die Farbrolle, nie den Farbwert direkt.
@@ -27,7 +35,7 @@ Eine benannte Schriftgröße mit festgelegter Verwendung, etwa die Stufe für Ab
 _Avoid_: Schriftgrad, Textgröße, Font-Size, Größe (ohne Zusatz)
 
 **Grundlagen**:
-Die Kapitel der Brand-Seite, die die Marke selbst festlegen: Logo, Farben, Typografie, Abstände & Form, Prinzipien, Tonalität.
+Die Kapitel der Brand-Seite, die die Marke selbst festlegen: Prinzipien, Logo, Farben, Typografie, Raster, Abstände & Form, Bildsprache, Grafische Elemente, Tonalität.
 _Avoid_: Basics, Foundations, Basiselemente
 
 **Anwendung**:
@@ -45,7 +53,7 @@ Ein benannter Markenwert, dessen einzige Quelle das Paket ist: eine Farbrolle mi
 _Avoid_: Variable, CSS-Variable, Design-Variable, Stilwert
 
 **Asset**:
-Eine Markendatei im Paket, die Konsumenten unverändert einbinden, etwa eine Variante der Wortmarke. Schriftdateien sind keine Assets der Marke.
+Eine Markendatei im Paket, die Konsumenten unverändert einbinden, etwa eine Variante des Signets. Schriftdateien sind keine Assets der Marke.
 _Avoid_: Download, Datei (ohne Zusatz), Ressource, Material
 
 **Konsument**:
@@ -65,3 +73,7 @@ _Avoid_: Styleguide, Brand-Portal, CI-Handbuch, Markenhandbuch
 **Änderungen**:
 Die Liste aller Releases mit den Tokens und Assets, die jeweils neu sind, sich geändert haben oder entfernt wurden.
 _Avoid_: Changelog (im Fließtext), Versionshistorie, Release Notes
+
+**Fehlerseite**:
+Die Seite, die die Brand-Seite statt des Inhalts zeigt: die 404, wenn es eine Adresse nicht gibt, und die Seite „Hier hakt’s.“, wenn beim Laden etwas schiefgeht.
+_Avoid_: Error Page, Error-Seite, 404-Page

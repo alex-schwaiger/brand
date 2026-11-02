@@ -5,9 +5,9 @@ export declare const color: {
   readonly "canvas": "#ffffff"
   readonly "muted": "#6b7280"
   readonly "subtle": "#f4f5f7"
-  readonly "online": "#22c55e"
+  readonly "online": "#16a34a"
   readonly "border": "#e8e9eb"
-  readonly "error": "#e85346"
+  readonly "error": "#c8382b"
   readonly "placeholder": "#d9d9d9"
   readonly "sand": "#dcd5cd"
 }

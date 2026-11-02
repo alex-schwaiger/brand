@@ -1,16 +1,18 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { ArrowSwap } from '@/components/motion/ArrowSwap'
+import { HoverLine } from '@/components/motion/HoverLine'
 import { uiText } from '@/lib/ui-text'
 import { Icon } from './Icon'
 
-/** Rohansicht einer Seite, über den Rewrite `/docs/:path*.mdx` in `next.config.ts`. */
+/** Rohansicht einer Seite, über die Rewrites `/:path*.mdx` und `/index.mdx` in `next.config.ts`. */
 export function mdxUrl(pageUrl: string) {
-  return `${pageUrl}.mdx`
+  return pageUrl === '/' ? '/index.mdx' : `${pageUrl}.mdx`
 }
 
 const aktion =
-  'inline-flex min-h-11 items-center gap-2 text-[13px] text-body leading-[1.4] hover:text-ink'
+  'group/line inline-flex min-h-11 items-center gap-2 text-[13px] text-body leading-[1.4] transition-colors duration-[120ms] ease-out hover:text-ink motion-reduce:transition-none'
 
 function MarkdownKopieren({ pageUrl }: { pageUrl: string }) {
   const [kopiert, setKopiert] = useState(false)
@@ -30,19 +32,19 @@ function MarkdownKopieren({ pageUrl }: { pageUrl: string }) {
   return (
     <button type='button' onClick={kopieren} className={aktion}>
       <Icon name={kopiert ? 'check' : 'copy'} size={14} className={kopiert ? 'text-ink' : ''} />
-      <span className={kopiert ? 'text-ink' : ''} aria-live='polite'>
-        {kopiert ? uiText.kopiert : uiText.markdownKopieren}
-      </span>
+      <HoverLine className={kopiert ? 'text-ink' : ''}>
+        <span aria-live='polite'>{kopiert ? uiText.kopiert : uiText.markdownKopieren}</span>
+      </HoverLine>
     </button>
   )
 }
 
 function MdxAnsehen({ pageUrl }: { pageUrl: string }) {
   return (
-    <a href={mdxUrl(pageUrl)} target='_blank' rel='noreferrer' className={aktion}>
+    <a href={mdxUrl(pageUrl)} target='_blank' rel='noreferrer' className={`group/arrow ${aktion}`}>
       <Icon name='file' size={14} />
-      {uiText.mdxAnsehen}
-      <Icon name='extern' size={13} className='text-ink' />
+      <HoverLine>{uiText.mdxAnsehen}</HoverLine>
+      <ArrowSwap className='text-ink' />
       <span className='sr-only'>{uiText.neuesFenster}</span>
     </a>
   )

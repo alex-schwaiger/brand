@@ -5,7 +5,11 @@ import type { Seitenverzeichnis } from '@/components/docs/Suche'
 import { logoDataUri, paketVersion } from '@/lib/assets'
 import { getNavigation } from '@/lib/navigation'
 
-export default function Layout({ children }: { children: ReactNode }) {
+/**
+ * Kopfleiste und Seitenleiste um eine Seite der Doku. Das Docs-Layout nutzt sie, und die 404 auch:
+ * Sie steht außerhalb der Routengruppe `(doku)` und soll trotzdem wie die Doku aussehen.
+ */
+export function DocsHuelle({ children }: { children: ReactNode }) {
   const { ungrouped, groups } = getNavigation()
 
   const verzeichnis: Seitenverzeichnis = {}

@@ -31,6 +31,29 @@ export const uiText = {
   neuesFenster: '(öffnet in neuem Tab)',
 } as const
 
+/**
+ * Texte der Fehlerseiten (404, Fehler einer Seite, Fehler des Layouts). Sie stehen hier und nicht in
+ * Tina, weil die Fehlerseite auch dann erscheinen muss, wenn der Inhalt selbst nicht lädt.
+ */
+export const fehlerText = {
+  nichtGefundenMeta: 'Seite nicht gefunden',
+  nichtGefundenTitel: 'Hier ist nichts.',
+  nichtGefundenIntro:
+    'Diese Adresse gibt es nicht (mehr). Die Suche oben oder eine der Seiten unten führt weiter.',
+  fehlerMeta: 'Fehler',
+  fehlerTitel: 'Hier hakt’s.',
+  fehlerIntro:
+    'Beim Laden ist etwas schiefgelaufen. Ein neuer Versuch hilft meistens, sonst bitte später noch einmal.',
+  erneutLaden: 'Erneut laden',
+  wegeWeiter: 'Wege weiter',
+  startseite: 'Startseite',
+  aenderungen: 'Änderungen',
+  quellcode: 'Quellcode auf GitHub',
+} as const
+
+/** Seiten, auf die die 404 weiterführt; die Titel kommen aus dem Inhalt. */
+export const nichtGefundenWege = ['/logo', '/farben', '/typografie'] as const
+
 export const githubUrl = 'https://github.com/alex-schwaiger/brand'
 
 export const agentLinks = [

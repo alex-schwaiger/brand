@@ -2,7 +2,9 @@
 
 import { type FormEvent, useState } from 'react'
 import { renderSVG } from 'uqr'
-import { Abschnitt, Fehler, Feld, Hinweis, Knopf } from '@/components/auth/ui'
+import { Abschnitt, Fehler, Feld, Hinweis, Knopf, unterstrichen } from '@/components/auth/ui'
+import { ArrowSwap } from '@/components/motion/ArrowSwap'
+import { RedrawRule } from '@/components/motion/RedrawRule'
 import { authClient, fehlertext } from '@/lib/auth-client'
 
 type Props = { email: string; zweiFaktorAktiv: boolean }
@@ -18,13 +20,12 @@ export function KontoEinstellungen({ email, zweiFaktorAktiv }: Props) {
       <Hinweis>Angemeldet als {email}.</Hinweis>
       <ZweiterFaktor aktiv={zweiFaktorAktiv} />
       <Passkeys />
-      <div className='flex gap-3'>
+      <div className='flex items-center gap-6'>
         {zweiFaktorAktiv && (
-          <a
-            href='/admin'
-            className='bg-fd-primary px-4 py-2 font-medium text-fd-primary-foreground tracking-nav hover:opacity-90'
-          >
+          <a href='/admin' className={`group/arrow ${unterstrichen}`}>
             Zum Editor
+            <ArrowSwap size={14} />
+            <RedrawRule />
           </a>
         )}
         <Knopf variante='sekundaer' onClick={abmelden}>

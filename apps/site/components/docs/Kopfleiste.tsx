@@ -11,13 +11,9 @@ import { type Seitenverzeichnis, Treffer, trefferId, useSuche, useSuchtasten } f
 
 const desktop = '(min-width: 1024px)'
 
-function Wortmarke({ src, className }: { src: string; className: string }) {
+function Signet({ src, className }: { src: string; className: string }) {
   return (
-    <Link
-      href='/docs'
-      aria-label={uiText.startseite}
-      className='flex min-h-11 min-w-11 items-center'
-    >
+    <Link href='/' aria-label={uiText.startseite} className='flex min-h-11 min-w-11 items-center'>
       {/* biome-ignore lint/performance/noImgElement: SVG aus dem Paket, keine Rasterbild-Optimierung nötig */}
       <img src={src} alt='' className={className} />
     </Link>
@@ -61,7 +57,7 @@ function SymbolTaste({
       onClick={onClick}
       className='flex size-11 shrink-0 items-center justify-center text-ink'
     >
-      <Icon name={icon} size={18} />
+      <Icon name={icon} size={20} />
     </button>
   )
 }
@@ -71,7 +67,7 @@ function Abdunklung({ onClick, className }: { onClick: () => void; className: st
     <div
       aria-hidden
       onClick={onClick}
-      className={`fixed inset-x-0 bottom-0 z-30 bg-canvas/90 ${className}`}
+      className={`einblenden fixed inset-x-0 bottom-0 z-30 bg-canvas/90 ${className}`}
     />
   )
 }
@@ -110,12 +106,6 @@ export function Kopfleiste({
   }
 
   const tasten = useSuchtasten(suche, schliessen)
-
-  function sucheAusMenue() {
-    setMenueOffen(false)
-    setSucheOffen(true)
-    requestAnimationFrame(() => mobilFeld.current?.focus())
-  }
 
   // ⌘K / Strg+K fokussiert das Suchfeld, esc schließt Menü und Suche
   useEffect(() => {
@@ -158,7 +148,7 @@ export function Kopfleiste({
     <header className='sticky top-0 z-40 bg-canvas'>
       {/* Desktop ab 1024 px */}
       <div className='mx-auto hidden h-24 w-full max-w-[1680px] items-center px-8 lg:flex'>
-        <Wortmarke src={logoSrc} className='h-[62px] w-[50px]' />
+        <Signet src={logoSrc} className='h-[62px] w-[50px]' />
         <div className='flex-1' />
         <div className='flex items-center gap-6'>
           <search
@@ -192,7 +182,7 @@ export function Kopfleiste({
               className='suchfeld h-8 w-[200px]'
             />
             {trefferOffen && (
-              <div className='absolute top-full left-0 z-40 w-[242px] bg-canvas pt-5 pb-8'>
+              <div className='einblenden absolute top-full left-0 z-40 w-[242px] bg-canvas pt-5 pb-8'>
                 <Treffer suche={suche} listId={listeDesktop} onNavigate={alleSchliessen} />
               </div>
             )}
@@ -202,8 +192,8 @@ export function Kopfleiste({
       </div>
 
       {/* Mobil unter 1024 px */}
-      <div className='flex h-14 items-center gap-2.5 pr-1 pl-4 lg:hidden'>
-        <Wortmarke src={logoSrc} className='h-[22.5px] w-[18.125px]' />
+      <div className='flex h-16 items-center gap-1 pr-1 pl-4 lg:hidden'>
+        <Signet src={logoSrc} className='h-9 w-[29px]' />
         <div className='flex-1' />
         <SymbolTaste
           icon={sucheOffen ? 'close' : 'search'}
@@ -229,7 +219,10 @@ export function Kopfleiste({
       </div>
 
       {sucheOffen && (
-        <div id={sucheMobilId} className='absolute inset-x-0 top-14 z-40 bg-canvas lg:hidden'>
+        <div
+          id={sucheMobilId}
+          className='einblenden absolute inset-x-0 top-16 z-40 bg-canvas lg:hidden'
+        >
           <div className='px-4 pt-2'>
             <input
               ref={mobilFeld}
@@ -265,21 +258,8 @@ export function Kopfleiste({
       {menueOffen && (
         <div
           id={menueId}
-          className='fixed inset-x-0 top-14 bottom-0 z-40 flex flex-col gap-8 overflow-y-auto bg-canvas pt-6 pr-4 pb-8 pl-8 lg:hidden'
+          className='einblenden fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col gap-8 overflow-y-auto bg-canvas pt-8 pr-4 pb-8 pl-8 lg:hidden'
         >
-          {/* Tippen gehört zur Suche: das Feld im Menü wechselt in die Suchansicht */}
-          <input
-            type='search'
-            aria-label={uiText.suchen}
-            placeholder={uiText.suchePlatzhalter}
-            value={suche.query}
-            onFocus={sucheAusMenue}
-            onChange={(event) => {
-              suche.setQuery(event.target.value)
-              sucheAusMenue()
-            }}
-            className='suchfeld h-11 w-full text-[16px]'
-          />
           <nav aria-label={uiText.navigation} className='flex flex-col gap-8'>
             <NavGroups groups={groups} groesse='mobil' onNavigate={() => setMenueOffen(false)} />
           </nav>
@@ -289,7 +269,7 @@ export function Kopfleiste({
       )}
 
       {trefferOffen && <Abdunklung onClick={schliessen} className='top-24 hidden lg:block' />}
-      {sucheOffen && <Abdunklung onClick={schliessen} className='top-14 lg:hidden' />}
+      {sucheOffen && <Abdunklung onClick={schliessen} className='top-16 lg:hidden' />}
     </header>
   )
 }

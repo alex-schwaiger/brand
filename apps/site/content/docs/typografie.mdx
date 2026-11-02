@@ -3,12 +3,21 @@ title: Typografie
 description: Schriftfamilien, Gewichte, Laufweite und Schriftstufen.
 ---
 
-Die Marke setzt auf zwei Familien: Switzer für alles Sichtbare, Geist Mono für Code. Beide werden selbst gehostet, kein Dritthost.
+Die Marke setzt auf zwei Familien: Switzer für alles Sichtbare, Geist Mono für Code im Web. Beide werden selbst gehostet, kein Dritthost. Print und PDF setzen nur Switzer.
 
 ## Schriften
 
 - **Switzer** ist ein Grotesk mit Charakter, breiter und eigenständiger als Inter oder Poppins. Im Display-Schnitt wirkt der Name wie ein Namensschild. Switzer ist eine Fontshare-Schrift und liegt bewusst nicht im Paket. Bezugsquelle: [fontshare.com/fonts/switzer](https://www.fontshare.com/fonts/switzer).
-- **Geist Mono** (Regular) für Code.
+- **Geist Mono** (Regular) für Code und Token-Namen, nur im Web. Im Druck gibt es keinen Code, und eine zweite Stimme würde die Ruhe der Seite stören.
+
+## Lizenz
+
+| Schrift | Lizenz | Erlaubt | Quelle |
+| --- | --- | --- | --- |
+| Switzer | ITF Free Font License 2.0 | Print, Web (selbst gehostet), PDF mit eingebetteter Schrift | `License/FFL.txt` im offiziellen Zip von fontshare.com, §01 und §03 |
+| Geist Mono | SIL Open Font License 1.1 | Print, Web, PDF mit eingebetteter Schrift | OFL 1.1 |
+
+Für Switzer gelten zwei Grenzen (FFL §02 und §04). Die Schriftdateien dürfen nicht verändert, nicht in andere Formate umgewandelt und nicht beschnitten werden. Sie gehen auch nicht an Dritte, also nicht an Druckereien, Agenturen oder als Teil einer verpackten Layoutdatei. Wer die Schrift braucht, lädt sie selbst bei Fontshare. Fertige PDFs mit eingebetteter Schrift dürfen dagegen frei weitergegeben werden.
 
 ## Verwendung
 
@@ -23,6 +32,20 @@ Eine Gewichtsstufe ohne eigene Schriftdatei synthetisiert der Browser. Jedes Gew
 ## Familien, Gewichte, Laufweite
 
 <TypeScale />
+
+## Hierarchie für Web und Print
+
+Print wird aus kürzerem Abstand gelesen als ein Bildschirm. Die Stufen in pt sind deshalb eigens gesetzt und nicht aus px umgerechnet. Im Druck liegen alle Stufen auf dem Grundlinienraster von 13,5 pt (siehe [Raster](/raster)).
+
+| Stufe | Schnitt | Web | Print |
+| --- | --- | --- | --- |
+| Display (Cover, Name) | Switzer Medium | Startseite des Portfolios | größer als H1, auf dem Raster |
+| H1 | Switzer Bold | 48 px | 30 pt |
+| H2 | Switzer Bold | 30 px | 18 pt |
+| H3 | Switzer Bold | 20 px | 12 pt |
+| Fließtext | Switzer Regular | 15 px, Zeilenhöhe 1,4 | 9,5 pt auf 13,5 pt |
+| Bildunterschrift | Switzer Regular | 13 px | 7,5 pt |
+| Label `[ ]` | Switzer Medium, Versalien | 11 px | 7 pt |
 
 ## Schriftstufen
 

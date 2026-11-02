@@ -4,7 +4,7 @@ import { join } from 'node:path'
 // next build und next dev laufen in apps/site; das Paket liegt im Workspace daneben
 const assets = join(process.cwd(), '../../packages/brand/assets')
 
-export type LogoAsset = 'logo-darkblue.svg' | 'logo-white.svg'
+export type LogoAsset = 'logo-darkblue.svg' | 'logo-black.svg' | 'logo-white.svg'
 
 /** Ein Asset aus dem Paket als data-URI, damit die Seite die Datei unverändert zeigt. */
 export function logoDataUri(asset: LogoAsset) {
