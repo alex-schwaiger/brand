@@ -253,6 +253,14 @@
   vertical-align: top;
 }
 
+/* Mobil wird keine Spalte schmaler als ein kurzer Begriff; breite Tabellen scrollen dann in sich */
+@media (max-width: 1023px) {
+  .inhalt th,
+  .inhalt td {
+    min-width: 112px;
+  }
+}
+
 .inhalt th:last-child,
 .inhalt td:last-child {
   padding-right: 0;

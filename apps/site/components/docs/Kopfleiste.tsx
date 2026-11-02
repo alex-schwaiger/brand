@@ -11,7 +11,7 @@ import { type Seitenverzeichnis, Treffer, trefferId, useSuche, useSuchtasten } f
 
 const desktop = '(min-width: 1024px)'
 
-function Wortmarke({ src, className }: { src: string; className: string }) {
+function Signet({ src, className }: { src: string; className: string }) {
   return (
     <Link
       href='/docs'
@@ -158,7 +158,7 @@ export function Kopfleiste({
     <header className='sticky top-0 z-40 bg-canvas'>
       {/* Desktop ab 1024 px */}
       <div className='mx-auto hidden h-24 w-full max-w-[1680px] items-center px-8 lg:flex'>
-        <Wortmarke src={logoSrc} className='h-[62px] w-[50px]' />
+        <Signet src={logoSrc} className='h-[62px] w-[50px]' />
         <div className='flex-1' />
         <div className='flex items-center gap-6'>
           <search
@@ -203,7 +203,7 @@ export function Kopfleiste({
 
       {/* Mobil unter 1024 px */}
       <div className='flex h-14 items-center gap-2.5 pr-1 pl-4 lg:hidden'>
-        <Wortmarke src={logoSrc} className='h-[22.5px] w-[18.125px]' />
+        <Signet src={logoSrc} className='h-6 w-[19.34px]' />
         <div className='flex-1' />
         <SymbolTaste
           icon={sucheOffen ? 'close' : 'search'}

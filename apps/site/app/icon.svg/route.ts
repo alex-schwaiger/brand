@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-// Favicon wie im Portfolio: die dunkelblaue Wortmarke, unverändert aus dem Paket
+// Favicon wie im Portfolio: das dunkelblaue Signet, unverändert aus dem Paket. Das Favicon ist die einzige Ausnahme von der Mindestgröße
 export const dynamic = 'force-static'
 
 export function GET() {

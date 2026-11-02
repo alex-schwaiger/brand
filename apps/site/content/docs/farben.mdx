@@ -1,9 +1,26 @@
 ---
 title: Farben
-description: Die Farbrollen der Marke und ihre Verwendung.
+description: Die Farbrollen der Marke, ihre Werte für Print und Web und die erlaubten Kontrastpaare.
 ---
 
 Die Marke arbeitet zurückhaltend: eine Tintenfarbe auf weißem Grund. Farbe ist selten und hat immer eine Bedeutung. Konsumenten verwenden die Farbrolle, nie den Farbwert direkt.
+
+## Warum Ink
+
+Ink liest sich wie Schwarz und hat doch eine Farbe. Das tiefe Marineblau erinnert an Druckertinte und Füllfeder, also an Handwerk. Es ist präzise und ruhig, ohne die Härte von reinem Schwarz. Auf Canvas erreicht es einen Kontrast von 15:1.
+
+## Farbgruppen
+
+| Gruppe | Farbrollen | Aufgabe |
+| --- | --- | --- |
+| Primär | `ink` | Text, Signet, aktive Rahmen, gefüllte Flächen |
+| Sekundär | `sand` | Warmer Grund hinter Projektbildern |
+| Neutral | `canvas`, `subtle`, `border`, `muted`, `body` | Hintergrund, Hover, Haarlinien, nachgeordneter Text, Fließtext |
+| Akzent | `online` | Status- und Standortpunkt |
+| Signal | `error` | Fehler und Warnungen |
+| Hilfsfarbe | `placeholder` | Bildflächen ohne Bild, nie sichtbar im fertigen Medium |
+
+Pro Fläche gibt es höchstens eine Farbe außer den neutralen. Der Akzent ist ein Punkt und nie eine Fläche.
 
 ## Rollen
 
@@ -14,12 +31,72 @@ Ein Klick auf einen Wert kopiert ihn.
     { rolle: "ink", verwendung: "Tiefes Marineblau, die Farbe der Marke. Für allen primären Text, aktive Rahmen und gefüllte Flächen wie Buttons." },
     { rolle: "body", verwendung: "Etwas wärmeres Dunkel für Fließtext und nachgeordnete Textelemente." },
     { rolle: "canvas", verwendung: "Reines Weiß als Hintergrund." },
-    { rolle: "muted", verwendung: "Nachgeordneter Text, Zeitangaben, deaktivierte Zustände." },
+    { rolle: "muted", verwendung: "Nachgeordneter Text, Zeitangaben, deaktivierte Zustände. Nur auf Canvas, nie auf Subtle oder Sand." },
     { rolle: "subtle", verwendung: "Hintergrund bei Hover." },
-    { rolle: "online", verwendung: "Status- und Standortpunkt, die einzige Akzentfarbe." },
+    { rolle: "online", verwendung: "Status- und Standortpunkt, die einzige Akzentfarbe. Nur als Punkt oder Grafik, nie als Text und nie auf Sand." },
     { rolle: "error", verwendung: "Allgemeine Warn- und Fehlerfarbe, etwa für Formularmeldungen und fehlgeschlagene Zustände." },
     { rolle: "border", verwendung: "Ausschließlich Haarlinien, nie für etwas Strukturelles." },
     { rolle: "placeholder", verwendung: "Neutrale Füllung für Bildflächen ohne Bild. Nie ein Gestaltungselement." },
-    { rolle: "sand", verwendung: "Warmer Grund hinter Projektbildern. Die Bilder liegen darauf eingepasst, als Fläche taucht Sand sonst nirgends auf." }
+    { rolle: "sand", verwendung: "Warmer Grund hinter Projektbildern. Die Bilder liegen darauf eingepasst, als Fläche taucht Sand sonst nirgends auf. Auf Sand steht kein Text." }
   ]}
 />
+
+## Werte für Print und Web
+
+CMYK gilt für matt gestrichenes Papier mit dem Profil **PSO Coated v3 (FOGRA51)**, umgerechnet aus sRGB mit relativ farbmetrischer Umrechnung. Verlangt eine Druckerei ISO Coated v2 (FOGRA39), werden die Werte aus sRGB neu umgerechnet und nicht von Hand angepasst.
+
+| Farbrolle | HEX | RGB | CMYK (FOGRA51) |
+| --- | --- | --- | --- |
+| ink | #13273F | 19 39 63 | 100 69 17 71 |
+| body | #2D2D2D | 45 45 45 | 0 0 0 90 (siehe unten) |
+| canvas | #FFFFFF | 255 255 255 | 0 0 0 0 |
+| muted | #6B7280 | 107 114 128 | 56 44 27 27 |
+| subtle | #F4F5F7 | 244 245 247 | 5 3 2 0 |
+| online | #16A34A | 22 163 74 | 78 1 91 2 |
+| border | #E8E9EB | 232 233 235 | 10 7 6 0 |
+| error | #C8382B | 200 56 43 | 4 91 95 15 |
+| placeholder | #D9D9D9 | 217 217 217 | 16 12 11 1 |
+| sand | #DCD5CD | 220 213 205 | 14 14 16 1 |
+
+**Fließtext im Druck:** Body ergibt umgerechnet ein Vierfarbschwarz (73 62 49 86). Kleine Schrift aus vier Farben verliert beim leichtesten Passerversatz ihre Schärfe. Fließtext in Body wird deshalb nur in Schwarz gedruckt, mit 90 % K.
+
+**Sonderfarben**, als Annäherung für Druck mit Volltonfarben. Sie werden vor dem Einsatz am Pantone-Fächer gegen ein Muster in CMYK geprüft.
+
+| Farbrolle | Pantone |
+| --- | --- |
+| ink | Pantone 2767 C |
+| sand | Pantone Warm Gray 1 C |
+
+## Kontrastpaare
+
+Text muss auf seinem Hintergrund mindestens 4,5:1 erreichen (WCAG 1.4.3). Grafik ohne Text, etwa ein Statuspunkt, mindestens 3:1 (WCAG 1.4.11).
+
+**Erlaubt für Text**
+
+| Text | auf | Kontrast |
+| --- | --- | --- |
+| ink | canvas | 15,1:1 |
+| ink | subtle | 13,9:1 |
+| canvas | ink | 15,1:1 |
+| body | canvas | 13,8:1 |
+| body | subtle | 12,6:1 |
+| muted | canvas | 4,8:1 |
+| error | canvas | 5,2:1 |
+| error | subtle | 4,8:1 |
+
+**Erlaubt für Grafik**
+
+| Element | auf | Kontrast |
+| --- | --- | --- |
+| online | canvas | 3,3:1 |
+| online | subtle | 3,0:1 |
+| ink (Signet) | sand | 10,4:1 |
+
+**Verboten**
+
+| Paar | Kontrast | Grund |
+| --- | --- | --- |
+| muted auf subtle | 4,4:1 | knapp unter 4,5:1. Hover-Flächen tragen Text in Ink oder Body. |
+| jeder Text auf sand | | Sand ist Bildgrund und keine Textfläche. |
+| online als Text | 3,3:1 | Der Akzent ist ein Punkt. Die Information steht im Text daneben. |
+| online auf sand | 2,3:1 | zu schwach auch für Grafik |
