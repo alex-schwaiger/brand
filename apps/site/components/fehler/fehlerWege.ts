@@ -7,7 +7,7 @@ import { fehlerText, githubUrl } from '@/lib/ui-text'
  * liegt, wenn die Seite ausfällt.
  */
 export const fehlerWege: readonly Weg[] = [
-  { label: fehlerText.startseite, href: '/docs' },
-  { label: fehlerText.aenderungen, href: '/docs/aenderungen' },
+  { label: fehlerText.startseite, href: '/' },
+  { label: fehlerText.aenderungen, href: '/aenderungen' },
   { label: fehlerText.quellcode, href: githubUrl, extern: true },
 ]

@@ -13,11 +13,7 @@ const desktop = '(min-width: 1024px)'
 
 function Signet({ src, className }: { src: string; className: string }) {
   return (
-    <Link
-      href='/docs'
-      aria-label={uiText.startseite}
-      className='flex min-h-11 min-w-11 items-center'
-    >
+    <Link href='/' aria-label={uiText.startseite} className='flex min-h-11 min-w-11 items-center'>
       {/* biome-ignore lint/performance/noImgElement: SVG aus dem Paket, keine Rasterbild-Optimierung nötig */}
       <img src={src} alt='' className={className} />
     </Link>

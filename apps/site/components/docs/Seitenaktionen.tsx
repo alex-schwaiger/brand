@@ -6,9 +6,9 @@ import { HoverLine } from '@/components/motion/HoverLine'
 import { uiText } from '@/lib/ui-text'
 import { Icon } from './Icon'
 
-/** Rohansicht einer Seite, über den Rewrite `/docs/:path*.mdx` in `next.config.ts`. */
+/** Rohansicht einer Seite, über die Rewrites `/:path*.mdx` und `/index.mdx` in `next.config.ts`. */
 export function mdxUrl(pageUrl: string) {
-  return `${pageUrl}.mdx`
+  return pageUrl === '/' ? '/index.mdx' : `${pageUrl}.mdx`
 }
 
 const aktion =

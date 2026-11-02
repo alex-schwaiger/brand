@@ -3,8 +3,10 @@ import { llms, loader } from 'fumadocs-core/source'
 import { farbrollenMarkdown } from '@/lib/farbrollen'
 import { seitenuebersichtMarkdown } from '@/lib/navigation'
 
+// Seiten liegen direkt unter /. Ein Slug darf darum keine feste Route treffen:
+// admin, api, konto, login, llms.mdx, llms.txt, llms-full.txt, tokens.json, icon.svg
 export const source = loader({
-  baseUrl: '/docs',
+  baseUrl: '/',
   source: docs.toFumadocsSource(),
 })
 
