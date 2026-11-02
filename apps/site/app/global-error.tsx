@@ -20,7 +20,7 @@ export default function GlobalError({ retry }: { retry: () => void }) {
       <body>
         <header className='mx-auto flex h-16 w-full max-w-[1680px] items-center pl-4 lg:h-24 lg:px-8'>
           <a
-            href='/docs'
+            href='/'
             aria-label={uiText.startseite}
             className='flex min-h-11 min-w-11 items-center'
           >

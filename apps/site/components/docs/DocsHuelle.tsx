@@ -6,8 +6,8 @@ import { logoDataUri, paketVersion } from '@/lib/assets'
 import { getNavigation } from '@/lib/navigation'
 
 /**
- * Kopfleiste und Seitenleiste um eine Seite der Doku. Das Docs-Layout nutzt sie, und die 404 auch,
- * weil eine unbekannte Adresse nicht unter `/docs` liegen muss und trotzdem wie die Doku aussehen soll.
+ * Kopfleiste und Seitenleiste um eine Seite der Doku. Das Docs-Layout nutzt sie, und die 404 auch:
+ * Sie steht außerhalb der Routengruppe `(doku)` und soll trotzdem wie die Doku aussehen.
  */
 export function DocsHuelle({ children }: { children: ReactNode }) {
   const { ungrouped, groups } = getNavigation()

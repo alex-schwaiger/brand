@@ -8,11 +8,17 @@ const nextConfig: NextConfig = {
   // Monorepo: Tracing muss vom Workspace-Root ausgehen, sonst fehlen Abhängigkeiten
   outputFileTracingRoot: path.join(import.meta.dirname, '../..'),
   async redirects() {
-    return [{ source: '/', destination: '/docs', permanent: false }]
+    // Die Seiten lagen früher unter /docs; alte Links und Suchergebnisse landen so am neuen Ort
+    return [
+      { source: '/docs', destination: '/', permanent: true },
+      { source: '/docs/:path*', destination: '/:path*', permanent: true },
+    ]
   },
   async rewrites() {
     return [
-      { source: '/docs/:path*.mdx', destination: '/llms.mdx/docs/:path*' },
+      // Rohansicht: /farben.mdx, die Startseite als /index.mdx
+      { source: '/index.mdx', destination: '/llms.mdx' },
+      { source: '/:path*.mdx', destination: '/llms.mdx/:path*' },
       // Tina baut das Admin-Bundle nach public/admin/index.html
       { source: '/admin', destination: '/admin/index.html' },
     ]

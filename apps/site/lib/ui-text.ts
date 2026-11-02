@@ -52,7 +52,7 @@ export const fehlerText = {
 } as const
 
 /** Seiten, auf die die 404 weiterführt; die Titel kommen aus dem Inhalt. */
-export const nichtGefundenWege = ['/docs/logo', '/docs/farben', '/docs/typografie'] as const
+export const nichtGefundenWege = ['/logo', '/farben', '/typografie'] as const
 
 export const githubUrl = 'https://github.com/alex-schwaiger/brand'
 
