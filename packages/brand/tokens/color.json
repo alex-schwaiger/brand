@@ -6,9 +6,9 @@
     "canvas": { "$value": "#ffffff" },
     "muted": { "$value": "#6b7280" },
     "subtle": { "$value": "#f4f5f7" },
-    "online": { "$value": "#22c55e" },
+    "online": { "$value": "#16a34a" },
     "border": { "$value": "#e8e9eb" },
-    "error": { "$value": "#e85346" },
+    "error": { "$value": "#c8382b" },
     "placeholder": { "$value": "#d9d9d9" },
     "sand": { "$value": "#dcd5cd" }
   }

@@ -41,12 +41,12 @@ Die Seite ist kein Styleguide neben dem Code, sondern Teil davon. Regeln, Tokens
 ## Brand Commitments
 
 - Die Seite trägt die Marke, die sie dokumentiert. Sie bezieht Tokens und Assets aus dem eigenen Paket und definiert keine eigenen Markenwerte.
-- Begriffe nach `GLOSSARY.md` (Marke, Wortmarke, Farbrolle, Farbwert, Schriftstufe, Grundlagen, Paket, Token, Konsument, Release, Änderungen).
+- Begriffe nach `GLOSSARY.md` (Marke, Signet, Farbgruppe, Bildwelt, Farbrolle, Farbwert, Schriftstufe, Grundlagen, Paket, Token, Konsument, Release, Änderungen).
 - Tonalität nach der Seite „Tonalität“: Ich-Form, Leserinnen und Leser werden gesiezt, kurze ruhige Sätze, keine Gedankenstriche.
 
 ## Evidence on Hand
 
-- Wortmarke als SVG: `packages/brand/assets/logo-darkblue.svg`, `logo-white.svg`.
+- Signet als SVG: `packages/brand/assets/logo-darkblue.svg`, `logo-black.svg`, `logo-white.svg`.
 - Tokens: `packages/brand/tokens/*.json` (DTCG), Version 1.0.0.
 - Inhalte der Grundlagen: `content/docs/*.mdx`, übernommen aus `DESIGN.md` und `COPY.md` des Portfolios.
 - `packages/brand/CHANGELOG.md` als Quelle für „Änderungen“.

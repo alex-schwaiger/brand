@@ -5,9 +5,9 @@ export const color = {
   "canvas": "#ffffff",
   "muted": "#6b7280",
   "subtle": "#f4f5f7",
-  "online": "#22c55e",
+  "online": "#16a34a",
   "border": "#e8e9eb",
-  "error": "#e85346",
+  "error": "#c8382b",
   "placeholder": "#d9d9d9",
   "sand": "#dcd5cd"
 }
