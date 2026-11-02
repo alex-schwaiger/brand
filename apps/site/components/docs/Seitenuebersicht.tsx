@@ -1,6 +1,7 @@
 import type { TOCItemType } from 'fumadocs-core/toc'
 import Link from 'next/link'
 import { Fragment } from 'react'
+import { HoverLine } from '@/components/motion/HoverLine'
 import { getNavigation } from '@/lib/navigation'
 
 function gruppenId(label: string) {
@@ -31,8 +32,8 @@ export function Seitenuebersicht() {
           <div className='linientabelle [--name-breite:120px] lg:[--name-breite:200px]'>
             {group.pages.map((page) => (
               <div key={page.url} className='linientabelle-zeile'>
-                <Link href={page.url} className='linientabelle-name hover:underline'>
-                  {page.title}
+                <Link href={page.url} className='group/line linientabelle-name w-fit'>
+                  <HoverLine>{page.title}</HoverLine>
                 </Link>
                 <p>{page.description}</p>
               </div>

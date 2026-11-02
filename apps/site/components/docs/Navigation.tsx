@@ -2,9 +2,10 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ArrowSwap } from '@/components/motion/ArrowSwap'
+import { HoverLine } from '@/components/motion/HoverLine'
 import type { NavGroup } from '@/lib/navigation'
 import { agentLinks, githubUrl, uiText } from '@/lib/ui-text'
-import { Icon } from './Icon'
 import { Label } from './Label'
 
 type Groesse = 'desktop' | 'mobil'
@@ -34,12 +35,12 @@ function NavItem({
         href={url}
         onClick={onNavigate}
         aria-current={active ? 'page' : undefined}
-        className={`group relative flex w-fit items-center gap-1.5 leading-[1.4] ${
+        className={`group/line relative flex w-fit items-center gap-1.5 leading-[1.4] ${
           mobil
             ? 'h-11 text-[20px]'
             : // Fokus: 1 px Rahmen in ink mit 4 px Innenabstand, ohne die Textkante zu verschieben
               '-mx-1 h-8 rounded-sm px-1 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-0'
-        } ${active ? 'font-medium text-ink tracking-nav' : 'text-body hover:text-ink focus-visible:text-ink'}`}
+        } ${active ? 'font-medium text-ink tracking-nav' : 'text-body transition-colors duration-[120ms] ease-out hover:text-ink focus-visible:text-ink motion-reduce:transition-none'}`}
       >
         {active && (
           <span
@@ -49,15 +50,7 @@ function NavItem({
             [
           </span>
         )}
-        <span
-          className={
-            mobil || active
-              ? ''
-              : 'decoration-1 decoration-ink underline-offset-4 group-hover:underline'
-          }
-        >
-          {title}
-        </span>
+        {active ? <span>{title}</span> : <HoverLine>{title}</HoverLine>}
         {active && (
           <span aria-hidden className='font-normal tracking-normal'>
             ]
@@ -118,10 +111,10 @@ export function AgentLinks({ className = '' }: { className?: string }) {
               href={link.href}
               target='_blank'
               rel='noreferrer'
-              className='group inline-flex items-center gap-1.5 text-[13px] text-body leading-[1.4] hover:text-ink'
+              className='group/arrow group/line inline-flex items-center gap-1.5 text-[13px] text-body leading-[1.4] transition-colors duration-[120ms] ease-out hover:text-ink motion-reduce:transition-none'
             >
-              {link.label}
-              <Icon name='extern' size={13} className='text-ink' />
+              <HoverLine>{link.label}</HoverLine>
+              <ArrowSwap className='text-ink' />
               <span className='sr-only'>{uiText.neuesFenster}</span>
             </a>
           </li>
@@ -157,10 +150,10 @@ export function MenueFuss({ paketVersion }: { paketVersion: string }) {
               href={link.href}
               target='_blank'
               rel='noreferrer'
-              className='inline-flex min-h-11 items-center gap-1.5 text-[13px] text-body leading-[1.4] hover:text-ink'
+              className='group/arrow group/line inline-flex min-h-11 items-center gap-1.5 text-[13px] text-body leading-[1.4] transition-colors duration-[120ms] ease-out hover:text-ink motion-reduce:transition-none'
             >
-              {link.label}
-              <Icon name='extern' size={13} className='text-ink' />
+              <HoverLine>{link.label}</HoverLine>
+              <ArrowSwap className='text-ink' />
               <span className='sr-only'>{uiText.neuesFenster}</span>
             </a>
           </li>

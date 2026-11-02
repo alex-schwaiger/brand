@@ -84,6 +84,10 @@
   appearance: none;
 }
 
+.suchfeld {
+  transition: border-color 120ms ease-out;
+}
+
 .suchfeld:focus,
 .suchfeld:hover {
   border-color: var(--color-ink);
@@ -178,11 +182,13 @@
   color: var(--color-ink);
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
+  transition: opacity 120ms ease-out;
 }
 
+/* Wie die Textlinks im Portfolio: beim Hover auf 60 % */
 .inhalt a:hover {
-  text-decoration-thickness: 2px;
+  opacity: 0.6;
 }
 
 /* Listen, die eine Komponente selbst gestaltet (z. B. Farbrollen), tragen .liste-ohne-stil */
@@ -298,5 +304,21 @@
   .inhalt tbody td:first-child {
     width: 140px;
     white-space: nowrap;
+  }
+}
+
+/* Bewegung nach dem Portfolio: minimal und funktional. Rein ease-out, raus ease-in;
+   bei reduzierter Bewegung steht alles sofort an seinem Platz. */
+
+@keyframes einblenden {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Menü, Suche und Abdunklung blenden über 200 ms ein */
+  .einblenden {
+    animation: einblenden 200ms ease-out;
   }
 }
