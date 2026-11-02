@@ -1,8 +1,10 @@
 import type { TOCItemType } from 'fumadocs-core/toc'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Randspalte } from '@/components/docs/Randspalte'
 import { Seitenaktionen } from '@/components/docs/Seitenaktionen'
 import { seitenuebersichtToc } from '@/components/docs/Seitenuebersicht'
+import { ogImages, siteName, twitterImages } from '@/lib/shareImage'
 import { source } from '@/lib/source'
 import { getMDXComponents } from '@/mdx-components'
 
@@ -52,5 +54,29 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
   const page = source.getPage(slug)
   if (!page) notFound()
 
-  return { title: page.data.title, description: page.data.description }
+  // Die Startseite trägt den Namen der Brand-Seite, statt „Marke | Marke …“
+  const isStart = !slug?.length
+  const title = isStart ? siteName : `${page.data.title} | ${siteName}`
+  const { description } = page.data
+
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: page.url },
+    openGraph: {
+      title,
+      description,
+      type: isStart ? 'website' : 'article',
+      url: page.url,
+      siteName,
+      locale: 'de_AT',
+      images: ogImages,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: twitterImages,
+    },
+  } satisfies Metadata
 }
