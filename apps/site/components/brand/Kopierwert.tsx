@@ -26,7 +26,7 @@ export function Kopierwert({ wert, beschreibung }: { wert: string; beschreibung:
       type='button'
       onClick={kopieren}
       aria-label={`${beschreibung} ${wert} ${uiText.kopieren}`}
-      className={`group inline-flex min-h-6 w-fit items-center gap-1.5 font-mono text-[12px] leading-[1.4] hover:text-ink focus-visible:text-ink ${
+      className={`group inline-flex min-h-6 w-fit items-center gap-1.5 font-mono text-[12px] leading-[1.4] transition-colors duration-[120ms] ease-out hover:text-ink motion-reduce:transition-none focus-visible:text-ink ${
         kopiert ? 'text-ink' : 'text-muted'
       }`}
     >
@@ -37,7 +37,7 @@ export function Kopierwert({ wert, beschreibung }: { wert: string; beschreibung:
         className={
           kopiert
             ? ''
-            : 'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100'
+            : 'opacity-0 transition-opacity duration-[120ms] ease-out group-hover:opacity-100 motion-reduce:transition-none group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100'
         }
       />
       <span aria-live='polite' className='sr-only'>

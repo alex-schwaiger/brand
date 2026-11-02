@@ -71,7 +71,7 @@ function Abdunklung({ onClick, className }: { onClick: () => void; className: st
     <div
       aria-hidden
       onClick={onClick}
-      className={`fixed inset-x-0 bottom-0 z-30 bg-canvas/90 ${className}`}
+      className={`einblenden fixed inset-x-0 bottom-0 z-30 bg-canvas/90 ${className}`}
     />
   )
 }
@@ -192,7 +192,7 @@ export function Kopfleiste({
               className='suchfeld h-8 w-[200px]'
             />
             {trefferOffen && (
-              <div className='absolute top-full left-0 z-40 w-[242px] bg-canvas pt-5 pb-8'>
+              <div className='einblenden absolute top-full left-0 z-40 w-[242px] bg-canvas pt-5 pb-8'>
                 <Treffer suche={suche} listId={listeDesktop} onNavigate={alleSchliessen} />
               </div>
             )}
@@ -229,7 +229,10 @@ export function Kopfleiste({
       </div>
 
       {sucheOffen && (
-        <div id={sucheMobilId} className='absolute inset-x-0 top-14 z-40 bg-canvas lg:hidden'>
+        <div
+          id={sucheMobilId}
+          className='einblenden absolute inset-x-0 top-14 z-40 bg-canvas lg:hidden'
+        >
           <div className='px-4 pt-2'>
             <input
               ref={mobilFeld}
@@ -265,7 +268,7 @@ export function Kopfleiste({
       {menueOffen && (
         <div
           id={menueId}
-          className='fixed inset-x-0 top-14 bottom-0 z-40 flex flex-col gap-8 overflow-y-auto bg-canvas pt-6 pr-4 pb-8 pl-8 lg:hidden'
+          className='einblenden fixed inset-x-0 top-14 bottom-0 z-40 flex flex-col gap-8 overflow-y-auto bg-canvas pt-6 pr-4 pb-8 pl-8 lg:hidden'
         >
           {/* Tippen gehört zur Suche: das Feld im Menü wechselt in die Suchansicht */}
           <input

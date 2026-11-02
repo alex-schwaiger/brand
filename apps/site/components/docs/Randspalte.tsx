@@ -19,13 +19,13 @@ function Inhaltsverzeichnis({ items }: { items: TOCItemType[] }) {
               <a
                 href={item.url}
                 aria-current={isActive ? 'location' : undefined}
-                className={`group flex items-center gap-2.5 text-[13px] leading-[1.4] ${
+                className={`group flex items-center gap-2.5 text-[13px] leading-[1.4] transition-colors duration-[120ms] ease-out motion-reduce:transition-none ${
                   isActive ? 'text-ink' : 'text-muted hover:text-ink'
                 }`}
               >
                 <span
                   aria-hidden
-                  className={`h-px w-1.5 shrink-0 ${isActive ? 'bg-ink' : 'bg-border group-hover:bg-ink'}`}
+                  className={`h-px w-1.5 shrink-0 transition-colors duration-[120ms] ease-out motion-reduce:transition-none ${isActive ? 'bg-ink' : 'bg-border group-hover:bg-ink'}`}
                 />
                 {item.title}
               </a>
