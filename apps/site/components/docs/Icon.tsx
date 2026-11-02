@@ -7,6 +7,7 @@ export type IconName =
   | 'github'
   | 'left'
   | 'menu'
+  | 'retry'
   | 'right'
   | 'search'
 

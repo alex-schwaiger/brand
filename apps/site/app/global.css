@@ -330,3 +330,19 @@
     animation: einblenden 200ms ease-out;
   }
 }
+
+/* Fehlerseiten: Titel, Intro und Wege steigen beim Laden auf, wie im Portfolio (rein ease-out).
+   Verzögerung und Weg setzt die Komponente über --verzoegerung und --weg. */
+@keyframes aufsteigen {
+  from {
+    opacity: 0;
+    transform: translateY(var(--weg, 20px));
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aufsteigen {
+    animation: aufsteigen 600ms cubic-bezier(0.33, 1, 0.68, 1) both;
+    animation-delay: var(--verzoegerung, 0ms);
+  }
+}

@@ -73,3 +73,7 @@ _Avoid_: Styleguide, Brand-Portal, CI-Handbuch, Markenhandbuch
 **Änderungen**:
 Die Liste aller Releases mit den Tokens und Assets, die jeweils neu sind, sich geändert haben oder entfernt wurden.
 _Avoid_: Changelog (im Fließtext), Versionshistorie, Release Notes
+
+**Fehlerseite**:
+Die Seite, die die Brand-Seite statt des Inhalts zeigt: die 404, wenn es eine Adresse nicht gibt, und die Seite „Hier hakt’s.“, wenn beim Laden etwas schiefgeht.
+_Avoid_: Error Page, Error-Seite, 404-Page
